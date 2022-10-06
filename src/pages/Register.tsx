@@ -2,7 +2,7 @@ import { Card, FloatingLabel, Form } from "react-bootstrap";
 
 export const Register = () => {
   return (
-    <Card style={{ width: "25rem" }} className="d-flex justify-content-center">
+    <Card style={{ width: "25rem" }}>
       <Card.Body>
         <Card.Title>Register</Card.Title>
         <FloatingLabel label="Full Name" className="mb-3">

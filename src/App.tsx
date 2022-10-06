@@ -5,7 +5,7 @@ import { Register } from "./pages/Register";
 
 function App() {
   return (
-    <div className="App d-flex" style={{ width: "100vh" }}>
+    <div className="App" style={{ width: "100vh" }}>
       <Navigation />
       <Register />
     </div>
