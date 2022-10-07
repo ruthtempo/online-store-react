@@ -8,10 +8,8 @@ import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
-    <Container className="App" style={{ height: "100vh" }}>
+    <Container className="App d-flex flex-column" style={{ height: "100vh" }}>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

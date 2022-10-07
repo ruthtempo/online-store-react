@@ -1,7 +1,7 @@
 import { Button, Card, FloatingLabel, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-type NewUser = {
+export type NewUser = {
   name: string;
   email: string;
   password: string;
@@ -15,16 +15,18 @@ export const Register = () => {
   } = useForm<NewUser>();
 
   const onSubmit = (data: NewUser) => {
-    localStorage.setItem(data.email, JSON.stringify(data));
+    let existingUsers = localStorage.getItem("users");
+    const userArr: NewUser[] = existingUsers ? JSON.parse(existingUsers) : [];
+    localStorage.setItem("users", JSON.stringify(userArr.concat(data)));
   };
 
   return (
     <Card
       style={{ maxWidth: 500 }}
-      className="mt=4 d-flex position-relative top-50 start-50 translate-middle"
+      className="mt=4 d-flex top-50 start-50 translate-middle shadow-lg "
     >
       <Card.Body>
-        <Card.Title>Registration</Card.Title>
+        <Card.Title>Create an account</Card.Title>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FloatingLabel label="Full Name" className="mb-3">
             <Form.Control
@@ -66,7 +68,7 @@ export const Register = () => {
             </Form.Control.Feedback>
           </FloatingLabel>
           <Button className="mt-3" type="submit">
-            Sign me in
+            Register
           </Button>
         </Form>
       </Card.Body>

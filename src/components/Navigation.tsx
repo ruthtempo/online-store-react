@@ -28,11 +28,13 @@ export const Navigation = () => {
               <Nav.Link href="#action2">Electronics</Nav.Link>
               <Nav.Link href="#action2">Women's clothing</Nav.Link>
             </Nav>
-            <PopoverUser />
-            <PopoverCart />
-            <Nav.Link as={Link} to="favorites">
-              <HeartFill size={30} className="me-3" />{" "}
-            </Nav.Link>
+            <div className="d-flex align-items-center">
+              <PopoverUser />
+              <PopoverCart />
+              <Nav.Link as={Link} to="favorites">
+                <HeartFill size={25} className="me-3" />
+              </Nav.Link>
+            </div>
             <Form className="d-flex">
               <Form.Control
                 type="search"
