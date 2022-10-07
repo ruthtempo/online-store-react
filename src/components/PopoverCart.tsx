@@ -15,7 +15,7 @@ export const PopoverCart = () => {
         </Popover>
       }
     >
-      <Cart4 size={30} className="me-3" role={"button"} />
+      <Cart4 size={25} className="me-3" role={"button"} />
     </OverlayTrigger>
   );
 };

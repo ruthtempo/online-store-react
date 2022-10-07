@@ -16,7 +16,7 @@ export const PopoverUser = () => {
         </Popover>
       }
     >
-      <PersonFill size={30} className="me-3" role={"button"} />
+      <PersonFill size={25} className="me-3" role={"button"} />
     </OverlayTrigger>
   );
 };

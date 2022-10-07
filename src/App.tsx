@@ -9,7 +9,7 @@ import { Register } from "./pages/Register";
 
 function App() {
   return (
-    <Container className="App d-flex flex-column" style={{ height: "100vh" }}>
+    <Container className="App d-flex flex-column vw-100 vh-100">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

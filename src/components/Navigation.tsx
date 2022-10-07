@@ -13,7 +13,7 @@ import { PopoverUser } from "./PopoverUser";
 
 export const Navigation = () => {
   return (
-    <Navbar expand="md" bg="light" variant="light" className="mb-4">
+    <Navbar expand="lg" bg="light" variant="light" className="mb-4">
       <Container fluid>
         <Navbar.Brand href="/">Brand Name</Navbar.Brand>
         <Navbar.Toggle />
@@ -28,11 +28,11 @@ export const Navigation = () => {
               <Nav.Link href="#action2">Electronics</Nav.Link>
               <Nav.Link href="#action2">Women's clothing</Nav.Link>
             </Nav>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center mb-2">
               <PopoverUser />
               <PopoverCart />
               <Nav.Link as={Link} to="favorites">
-                <HeartFill size={25} className="me-3" />
+                <HeartFill size={20} className="me-3" />
               </Nav.Link>
             </div>
             <Form className="d-flex">
