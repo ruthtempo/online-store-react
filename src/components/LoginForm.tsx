@@ -1,6 +1,9 @@
 import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export const LoginForm = () => {
+  const logIn = () => {};
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -14,9 +17,15 @@ export const LoginForm = () => {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" onClick={logIn}>
         Log In
       </Button>
+      <p className="mt-2">
+        Don't have an account?{" "}
+        <Link className="text-decoration-none" to="/register">
+          Register
+        </Link>
+      </p>
     </Form>
   );
 };

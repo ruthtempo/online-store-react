@@ -7,23 +7,19 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
 
 export const Navigation = () => {
   return (
-    <Navbar expand="md" bg="light" variant="light" fixed="top">
+    <Navbar expand="md" bg="light" variant="light" className="mb-4">
       <Container fluid>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-md`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-          placement="end"
-        >
+        <Navbar.Brand href="/">Brand Name</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Offcanvas placement="end">
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`}>
-              My Store
-            </Offcanvas.Title>
+            <Offcanvas.Title>My Store</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
@@ -34,7 +30,9 @@ export const Navigation = () => {
             </Nav>
             <PopoverUser />
             <PopoverCart />
-            <HeartFill size={30} className="me-3" />
+            <Nav.Link as={Link} to="favorites">
+              <HeartFill size={30} className="me-3" />{" "}
+            </Nav.Link>
             <Form className="d-flex">
               <Form.Control
                 type="search"
