@@ -17,6 +17,7 @@ function App() {
           <Route path="*" element={<p>Page does not exist</p>}></Route>
         </Routes>
       </Container>
+      <footer className="p-4 bg-light">footer</footer>
     </>
   );
 }
