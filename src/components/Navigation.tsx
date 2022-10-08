@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -12,6 +13,16 @@ import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
 
 export const Navigation = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchProductcategories = () => {
+      fetch("https://fakestoreapi.com/products/categories")
+        .then((res) => res.json())
+        .then((json) => setCategories(json));
+    };
+    fetchProductcategories();
+  }, []);
   return (
     <Navbar expand="lg" bg="light" variant="light" className="mb-4">
       <Container fluid>
@@ -25,10 +36,9 @@ export const Navigation = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Men's clothing</Nav.Link>
-              <Nav.Link href="#action2">Jewelery</Nav.Link>
-              <Nav.Link href="#action2">Electronics</Nav.Link>
-              <Nav.Link href="#action2">Women's clothing</Nav.Link>
+              {categories.map((cat) => (
+                <Nav.Link href="#action1">{cat}</Nav.Link>
+              ))}
             </Nav>
             <div className="d-flex align-items-center mb-2">
               <PopoverUser />
