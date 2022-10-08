@@ -25,11 +25,16 @@ export const Categories = () => {
   }, []);
 
   return (
-    <Row>
+    <Row xs={1} md={2}>
       {products.map((product) => (
-        <Col>
+        <Col
+          className="mb-3"
+          md={{ span: 6 }}
+          lg={{ span: 4 }}
+          xxl={{ span: 3, offset: 2 }}
+        >
           <Card className="h-100">
-            <div className="p-3">
+            <div className="m-3">
               <HeartFill size={25} fill={"pink"} />
             </div>
             <Card.Body>
@@ -45,18 +50,19 @@ export const Categories = () => {
               <Card.Title className="text-center mt-4">
                 <h5>{product.title}</h5>
               </Card.Title>
+
+              <Card.Text className="d-flex flex-column align-items-center">
+                {product.price}$
+                <ButtonGroup className="mt-2">
+                  <Button>-</Button>
+                  <Button variant="light" disabled>
+                    1
+                  </Button>
+                  <Button>+</Button>
+                </ButtonGroup>
+                <Button className="mt-4">Add to Cart</Button>
+              </Card.Text>
             </Card.Body>
-            <Card.Footer className="d-flex flex-column align-items-center">
-              {product.price}$
-              <ButtonGroup className="mt-2">
-                <Button>-</Button>
-                <Button variant="light" disabled>
-                  1
-                </Button>
-                <Button>+</Button>
-              </ButtonGroup>
-              <Button className="mt-4">Add to Cart</Button>
-            </Card.Footer>
           </Card>
         </Col>
       ))}
