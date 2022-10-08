@@ -36,8 +36,10 @@ export const Navigation = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              {categories.map((cat) => (
-                <Nav.Link href="#action1">{cat}</Nav.Link>
+              {categories.map((cat, i) => (
+                <Nav.Link as={Link} to={i.toString()}>
+                  {cat.toUpperCase()}
+                </Nav.Link>
               ))}
             </Nav>
             <div className="d-flex align-items-center mb-2">
