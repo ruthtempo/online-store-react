@@ -42,7 +42,6 @@ export const Register = () => {
               <FloatingLabel label="Full Name" className="mb-3">
                 <Form.Control
                   type="text"
-                  placeholder="Your Name"
                   {...register("name", { required: "This field is required" })}
                   isInvalid={!!errors.name}
                 />
@@ -53,7 +52,6 @@ export const Register = () => {
               <FloatingLabel label="Email" className="mb-3">
                 <Form.Control
                   type="email"
-                  placeholder="name@example.com"
                   {...register("email", { required: "an email is required" })}
                   isInvalid={!!errors.email}
                 />
@@ -71,7 +69,6 @@ export const Register = () => {
                     },
                   })}
                   type="password"
-                  placeholder="Password"
                   isInvalid={!!errors.password}
                 />
                 <Form.Control.Feedback type="invalid">

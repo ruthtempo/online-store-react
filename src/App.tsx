@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Container } from "react-bootstrap";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
