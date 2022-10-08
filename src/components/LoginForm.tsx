@@ -7,14 +7,15 @@ import { NewUser as User } from "../pages/Register";
 export const LoginForm = () => {
   const { user, setUser } = useUser();
   const { register, handleSubmit } = useForm<User>();
+
   const logIn = (data: User) => {
     const users = localStorage.getItem("users") ?? "[]";
     const usersArray: User[] = JSON.parse(users);
     const matchingUser = usersArray.find(
       (user) => data.email === user.email && data.password === user.password
     );
-    console.log("matchin", matchingUser);
     setUser(matchingUser);
+    localStorage.setItem("currentUser", JSON.stringify(matchingUser));
   };
 
   return (
@@ -35,9 +36,7 @@ export const LoginForm = () => {
           {...register("password")}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+
       <Button variant="primary" type="submit">
         Log In
       </Button>

@@ -1,10 +1,16 @@
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { Button, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+
+  const logOut = () => {
+    localStorage.removeItem("currentUser");
+    setUser(null);
+  };
+
   return !user ? (
     <OverlayTrigger
       trigger="click"
@@ -22,11 +28,16 @@ export const PopoverUser = () => {
     </OverlayTrigger>
   ) : (
     <OverlayTrigger
-      trigger="hover"
+      trigger="click"
       placement="bottom"
       overlay={
         <Popover>
-          <Popover.Body>You are logged in as {user.name}</Popover.Body>
+          <Popover.Body className="text-center">
+            <h6>You are logged in as {user.name}</h6>
+            <Button size="sm" onClick={logOut}>
+              Log out
+            </Button>
+          </Popover.Body>
         </Popover>
       }
     >
