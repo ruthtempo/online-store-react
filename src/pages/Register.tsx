@@ -1,6 +1,7 @@
 import { watch } from "fs";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export type NewUser = {
   name: string;
@@ -10,6 +11,7 @@ export type NewUser = {
 };
 
 export const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ export const Register = () => {
     let existingUsers = localStorage.getItem("users");
     const userArr: NewUser[] = existingUsers ? JSON.parse(existingUsers) : [];
     localStorage.setItem("users", JSON.stringify(userArr.concat(data)));
+    navigate("/");
   };
 
   return (
