@@ -5,7 +5,7 @@ import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
   const { user } = useUser();
-  return user === null ? (
+  return !user ? (
     <OverlayTrigger
       trigger="click"
       placement="bottom"
@@ -26,7 +26,7 @@ export const PopoverUser = () => {
       placement="bottom"
       overlay={
         <Popover>
-          <Popover.Body>You are logged in</Popover.Body>
+          <Popover.Body>You are logged in as {user.name}</Popover.Body>
         </Popover>
       }
     >

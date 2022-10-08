@@ -8,8 +8,10 @@ export const Favorites = () => {
   return user ? (
     <div>favorites</div>
   ) : (
-    <div className="d-flex flex-column mt-4">
-      <Alert>Create an account to save to favorites </Alert>
+    <div className="d-flex flex-column mt-4 ">
+      <Alert className="d-flex align-self-center">
+        Create an account to save to favorites
+      </Alert>
       <Register />
     </div>
   );

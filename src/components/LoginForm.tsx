@@ -5,12 +5,10 @@ import { useUser } from "../context/UserContext";
 import { NewUser as User } from "../pages/Register";
 
 export const LoginForm = () => {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const { register, handleSubmit } = useForm<User>();
-
   const logIn = (data: User) => {
     const users = localStorage.getItem("users") ?? "[]";
-    console.log(users);
     const usersArray: User[] = JSON.parse(users);
     const matchingUser = usersArray.find(
       (user) => data.email === user.email && data.password === user.password
@@ -34,7 +32,7 @@ export const LoginForm = () => {
         <Form.Control
           type="password"
           placeholder="Password"
-          {...register("email")}
+          {...register("password")}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -44,7 +42,7 @@ export const LoginForm = () => {
         Log In
       </Button>
       <p className="mt-2">
-        Don't have an account?{" "}
+        Don't have an account?
         <Link className="text-decoration-none" to="/register">
           Register
         </Link>

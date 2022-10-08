@@ -15,7 +15,9 @@ export const Navigation = () => {
   return (
     <Navbar expand="lg" bg="light" variant="light" className="mb-4">
       <Container fluid>
-        <Navbar.Brand href="/">Brand Name</Navbar.Brand>
+        <Navbar.Brand to="/" as={Link}>
+          Brand Name
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Offcanvas placement="end">
           <Offcanvas.Header closeButton>
