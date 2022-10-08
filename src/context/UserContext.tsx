@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { NewUser as User } from "../pages/Register";
 
 export const UserContext = createContext<{
@@ -8,6 +8,18 @@ export const UserContext = createContext<{
 
 export const UserContextProvider = (p: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null | undefined>(null);
+
+  function checkIfLoggedUser() {
+    const currentUser = localStorage.getItem("currentUser");
+    if (currentUser) {
+      const userObject = JSON.parse(currentUser);
+      setUser(userObject);
+    }
+  }
+
+  useEffect(() => {
+    checkIfLoggedUser();
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
