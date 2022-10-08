@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   price: string;
@@ -13,6 +13,16 @@ type Product = {
 
 export const Categories = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [units, setUnits] = useState(1);
+
+  const increaseUnits = () => {
+    setUnits(units + 1);
+  };
+  const decreaseUnits = () => {
+    if (units > 0) {
+      setUnits(units - 1);
+    }
+  };
 
   const fetchproducts = () => {
     fetch("https://fakestoreapi.com/products/category/jewelery")
@@ -33,7 +43,7 @@ export const Categories = () => {
           lg={{ span: 4 }}
           xxl={{ span: 3, offset: 2 }}
         >
-          <Card className="h-100">
+          <Card className="h-100 shadow-sm">
             <div className="m-3">
               <HeartFill size={25} fill={"pink"} />
             </div>
@@ -54,11 +64,11 @@ export const Categories = () => {
               <Card.Text className="d-flex flex-column align-items-center">
                 {product.price}$
                 <ButtonGroup className="mt-2">
-                  <Button>-</Button>
+                  <Button onClick={decreaseUnits}>-</Button>
                   <Button variant="light" disabled>
-                    1
+                    {units}
                   </Button>
-                  <Button>+</Button>
+                  <Button onClick={increaseUnits}>+</Button>
                 </ButtonGroup>
                 <Button className="mt-4">Add to Cart</Button>
               </Card.Text>

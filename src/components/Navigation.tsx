@@ -36,8 +36,8 @@ export const Navigation = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
-              {categories.map((cat, i) => (
-                <Nav.Link as={Link} to={i.toString()}>
+              {categories.map((cat) => (
+                <Nav.Link as={Link} to="...">
                   {cat.toUpperCase()}
                 </Nav.Link>
               ))}

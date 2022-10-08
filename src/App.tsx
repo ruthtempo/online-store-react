@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
+import { Cart } from "./pages/Cart";
 import { Categories } from "./pages/Category";
 import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
@@ -15,7 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="favorites" element={<Favorites />} />
-          <Route path="" />
+          <Route path="" element={<Cart />} />
+          <Route path="" element={<Categories />} />
           <Route path="*" element={<p>Page does not exist</p>}></Route>
         </Routes>
       </Container>
