@@ -1,3 +1,4 @@
+import { Alert } from "react-bootstrap";
 import { useUser } from "../context/UserContext";
 import { Register } from "./Register";
 
@@ -7,8 +8,8 @@ export const Favorites = () => {
   return user ? (
     <div>favorites</div>
   ) : (
-    <div className="d-flex flex-column justify-content-around mt-4">
-      <p>Please create an account to save to favorites </p>
+    <div className="d-flex flex-column mt-4">
+      <Alert>Create an account to save to favorites </Alert>
       <Register />
     </div>
   );

@@ -1,9 +1,11 @@
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
+import { useUser } from "../context/UserContext";
 import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
-  return (
+  const { user } = useUser();
+  return user === null ? (
     <OverlayTrigger
       trigger="click"
       placement="bottom"
@@ -13,6 +15,18 @@ export const PopoverUser = () => {
           <Popover.Body>
             <LoginForm />
           </Popover.Body>
+        </Popover>
+      }
+    >
+      <PersonFill size={25} className="me-3" role={"button"} />
+    </OverlayTrigger>
+  ) : (
+    <OverlayTrigger
+      trigger="hover"
+      placement="bottom"
+      overlay={
+        <Popover>
+          <Popover.Body>You are logged in</Popover.Body>
         </Popover>
       }
     >
