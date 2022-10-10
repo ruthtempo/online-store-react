@@ -63,15 +63,7 @@ export const Categories = () => {
 };
 ```
 
-This parameter, that will be different depending on which path we click on our navbar( or type on our browser), can be used in the API call to dinamically fetch our categories. If the cstegoryName exists, the products of that category will be rendered.
-
-```ts
-const fetchproducts = () => {
-  fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
-    .then((res) => res.json())
-    .then((json) => setProducts(json));
-};
-```
+This parameter, that will be different depending on which path we click on our navbar( or type on our browser), can be used in the API call to dinamically fetch our categories. If the **categoryName** exists, the products of that category will be rendered.
 
 ![diagram1](diagram1.png)
 
