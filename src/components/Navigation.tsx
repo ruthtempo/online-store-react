@@ -23,6 +23,7 @@ export const Navigation = () => {
     };
     fetchProductCategories();
   }, []);
+
   return (
     <Navbar expand="lg" bg="light" variant="light" className="mb-4">
       <Container fluid>
