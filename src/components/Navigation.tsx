@@ -37,7 +37,7 @@ export const Navigation = () => {
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3">
               {categories.map((cat) => (
-                <Nav.Link as={Link} to="...">
+                <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
                   {cat.toUpperCase()}
                 </Nav.Link>
               ))}

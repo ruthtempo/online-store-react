@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
+import { useParams } from "react-router-dom";
 
 export type Product = {
   id: number;
@@ -15,6 +16,8 @@ export const Categories = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [units, setUnits] = useState(1);
 
+  const { categoryName } = useParams();
+
   const increaseUnits = () => {
     setUnits(units + 1);
   };
@@ -25,14 +28,14 @@ export const Categories = () => {
   };
 
   const fetchproducts = () => {
-    fetch("https://fakestoreapi.com/products/category/jewelery")
+    fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
       .then((res) => res.json())
       .then((json) => setProducts(json));
   };
 
   useEffect(() => {
     fetchproducts();
-  }, []);
+  }, [categoryName]);
 
   return (
     <Row xs={1} md={2}>
