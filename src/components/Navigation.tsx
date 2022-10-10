@@ -16,12 +16,12 @@ export const Navigation = () => {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchProductcategories = () => {
+    const fetchProductCategories = () => {
       fetch("https://fakestoreapi.com/products/categories")
         .then((res) => res.json())
         .then((json) => setCategories(json));
     };
-    fetchProductcategories();
+    fetchProductCategories();
   }, []);
   return (
     <Navbar expand="lg" bg="light" variant="light" className="mb-4">
