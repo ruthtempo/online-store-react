@@ -5,6 +5,7 @@ import App from "./App";
 import "./index.css";
 import { UserContextProvider } from "./context/UserContext";
 import { FavoritesContextProvider } from "./context/FavoritesContext";
+import { CartContextProvider } from "./context/CartContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <UserContextProvider>
-      <FavoritesContextProvider>
-        <App />
-      </FavoritesContextProvider>
+      <CartContextProvider>
+        <FavoritesContextProvider>
+          <App />
+        </FavoritesContextProvider>
+      </CartContextProvider>
     </UserContextProvider>
   </BrowserRouter>
 );
