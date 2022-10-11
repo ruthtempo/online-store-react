@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Button, ButtonGroup, Card } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
+import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 import { Product } from "../pages/Category";
 
 export const ProductCard = (p: { product: Product }) => {
   const { favorites, toggleFavorites } = useFavorites();
+  const { cart, setCart, addToCart } = useCart();
   const [units, setUnits] = useState(1);
   const increaseUnits = () => {
     setUnits(units + 1);
