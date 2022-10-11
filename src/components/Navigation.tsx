@@ -10,12 +10,14 @@ import {
 import { HeartFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
+import { useUser } from "../context/UserContext";
 import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
 
 export const Navigation = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const { favorites } = useFavorites();
+  const { user } = useUser();
 
   useEffect(() => {
     const fetchProductCategories = () => {
@@ -50,7 +52,7 @@ export const Navigation = () => {
               <PopoverCart />
               <Nav.Link as={Link} to="favorites">
                 <HeartFill size={20} fill={"#4d88ff"} className="me-1" />
-                {favorites.length}
+                {user ? favorites.length : <></>}
               </Nav.Link>
             </div>
             <Form className="d-flex">
