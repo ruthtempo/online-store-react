@@ -40,17 +40,14 @@ export const Categories = () => {
   return (
     <Row xs={1} md={2}>
       {products.map((product) => (
-        <Col
-          className="mb-3"
-          md={{ span: 6 }}
-          lg={{ span: 4 }}
-          xxl={{ span: 3, offset: 2 }}
-        >
-          <Card className="h-100 shadow-sm">
-            <div className="m-3">
-              <HeartFill size={25} fill={"pink"} />
-            </div>
-            <Card.Body>
+        <Col className="mb-3" md={6} lg={4} xxl={3}>
+          <Card className="h-100 shadow-sm text-center ">
+            <HeartFill
+              size={30}
+              fill={"pink"}
+              className="m-3 d-flex align-self-end"
+            />
+            <Card.Body className="d-flex flex-column">
               <div
                 style={{
                   backgroundImage: `url(${product.image})`,
@@ -60,20 +57,19 @@ export const Categories = () => {
                   height: 200,
                 }}
               ></div>
-              <Card.Title className="text-center mt-4">
-                <h5>{product.title}</h5>
+              <Card.Title className="flex-grow-1 mt-3">
+                {product.title}
               </Card.Title>
-
-              <Card.Text className="d-flex flex-column align-items-center">
-                {product.price}$
-                <ButtonGroup className="mt-2">
+              <Card.Subtitle className="mt-2">{product.price}$</Card.Subtitle>
+              <Card.Text className="d-flex flex-column align-items-center mt-3 flex-grow-0">
+                <ButtonGroup>
                   <Button onClick={decreaseUnits}>-</Button>
                   <Button variant="light" disabled>
                     {units}
                   </Button>
                   <Button onClick={increaseUnits}>+</Button>
                 </ButtonGroup>
-                <Button className="mt-4">Add to Cart</Button>
+                <Button className="mt-3">Add to Cart</Button>
               </Card.Text>
             </Card.Body>
           </Card>
