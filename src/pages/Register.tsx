@@ -1,7 +1,7 @@
-import { watch } from "fs";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Product } from "./Category";
 
 export type NewUser = {
   userId: number;
@@ -9,6 +9,7 @@ export type NewUser = {
   email: string;
   password: string;
   confirmPassword: string;
+  favoriteItems: Product[];
 };
 
 export const Register = () => {
@@ -26,7 +27,9 @@ export const Register = () => {
     const userArr: NewUser[] = existingUsers ? JSON.parse(existingUsers) : [];
     localStorage.setItem(
       "users",
-      JSON.stringify(userArr.concat({ ...data, userId: userId }))
+      JSON.stringify(
+        userArr.concat({ ...data, userId: userId, favoriteItems: [] })
+      )
     );
     navigate("/");
   };

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Card, ButtonGroup, Button } from "react-bootstrap";
-import { HeartFill, Heart } from "react-bootstrap-icons";
+import { Button, ButtonGroup, Card } from "react-bootstrap";
+import { HeartFill } from "react-bootstrap-icons";
 import { useFavorites } from "../context/FavoritesContext";
 import { Product } from "../pages/Category";
 

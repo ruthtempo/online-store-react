@@ -1,14 +1,17 @@
 import { Button, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
+import { useFavorites } from "../context/FavoritesContext";
 import { useUser } from "../context/UserContext";
 import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
   const { user, setUser } = useUser();
+  const { setFavorites } = useFavorites();
 
   const logOut = () => {
     localStorage.removeItem("currentUser");
     setUser(null);
+    setFavorites([]);
   };
 
   return !user ? (

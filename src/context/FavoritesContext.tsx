@@ -1,6 +1,8 @@
 import React from "react";
 import { createContext, useState } from "react";
 import { Product } from "../pages/Category";
+import { useUser } from "./UserContext";
+import { NewUser as User } from "../pages/Register";
 
 export const FavoritesContext = createContext<{
   favorites: Product[];
@@ -10,15 +12,21 @@ export const FavoritesContext = createContext<{
 
 export const FavoritesContextProvider = (p: { children: React.ReactNode }) => {
   const [favorites, setFavorites] = useState<Product[]>([]);
+  const { user } = useUser();
 
   const toggleFavorites = (product: Product) => {
     const isFavorite = favorites.some((p) => p.id === product.id);
     if (isFavorite) {
-      const updatedFavArr = favorites.filter((p) => p.id !== product.id);
-      setFavorites(updatedFavArr);
+      const removedFav = favorites.filter((p) => p.id !== product.id);
+      setFavorites(removedFav);
     } else {
-      const newFavArr = favorites.concat(product);
-      setFavorites(newFavArr);
+      const addedFav = favorites.concat(product);
+      setFavorites(addedFav);
+
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({ ...user, favoriteItems: addedFav })
+      );
     }
   };
   return (
