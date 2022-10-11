@@ -45,7 +45,9 @@ export const ProductCard = (p: { product: Product }) => {
             </Button>
             <Button onClick={increaseUnits}>+</Button>
           </ButtonGroup>
-          <Button className="mt-3">Add to Cart</Button>
+          <Button className="mt-3" onClick={() => addToCart(p.product)}>
+            Add to Cart
+          </Button>
         </Card.Text>
       </Card.Body>
     </Card>
