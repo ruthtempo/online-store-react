@@ -18,23 +18,13 @@ export const ProductCard = (p: { product: Product }) => {
 
   return (
     <Card className="h-100 shadow-sm text-center ">
-      {favorites.includes(p.product) ? (
-        <HeartFill
-          cursor="pointer"
-          size={30}
-          fill={"#C779D0"}
-          className="m-3 d-flex align-self-end"
-          onClick={() => toggleFavorites(p.product)}
-        />
-      ) : (
-        <Heart
-          cursor="pointer"
-          size={30}
-          fill={"#C779D0"}
-          className="m-3 d-flex align-self-end"
-          onClick={() => toggleFavorites(p.product)}
-        />
-      )}
+      <HeartFill
+        cursor="pointer"
+        size={30}
+        fill={favorites.includes(p.product) ? "#4d88ff" : "#ccddff"}
+        className="m-3 d-flex align-self-end"
+        onClick={() => toggleFavorites(p.product)}
+      />
       <Card.Body className="d-flex flex-column">
         <div
           style={{

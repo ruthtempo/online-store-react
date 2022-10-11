@@ -49,7 +49,7 @@ export const Navigation = () => {
               <PopoverUser />
               <PopoverCart />
               <Nav.Link as={Link} to="favorites">
-                <HeartFill size={20} fill={"#C779D0"} className="me-1" />
+                <HeartFill size={20} fill={"#4d88ff"} className="me-1" />
                 {favorites.length}
               </Nav.Link>
             </div>
