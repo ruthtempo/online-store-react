@@ -2,7 +2,6 @@ import React from "react";
 import { createContext, useState } from "react";
 import { Product } from "../pages/Category";
 import { useUser } from "./UserContext";
-import { NewUser as User } from "../pages/Register";
 
 export const FavoritesContext = createContext<{
   favorites: Product[];
@@ -19,6 +18,10 @@ export const FavoritesContextProvider = (p: { children: React.ReactNode }) => {
     if (isFavorite) {
       const removedFav = favorites.filter((p) => p.id !== product.id);
       setFavorites(removedFav);
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({ ...user, favoriteItems: removedFav })
+      );
     } else {
       const addedFav = favorites.concat(product);
       setFavorites(addedFav);

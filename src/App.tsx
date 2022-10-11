@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="favorites" element={<Favorites />} />
-          <Route path="" element={<Cart />} />
+          <Route path="cart" element={<Cart />} />
           <Route path="category/:categoryName" element={<Categories />} />
           <Route path="*" element={<p>Page does not exist</p>}></Route>
         </Routes>
