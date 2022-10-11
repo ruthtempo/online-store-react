@@ -9,11 +9,13 @@ import {
 } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useFavorites } from "../context/FavoritesContext";
 import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
 
 export const Navigation = () => {
   const [categories, setCategories] = useState<string[]>([]);
+  const { favorites } = useFavorites();
 
   useEffect(() => {
     const fetchProductCategories = () => {
@@ -43,11 +45,12 @@ export const Navigation = () => {
                 </Nav.Link>
               ))}
             </Nav>
-            <div className="d-flex align-items-center mb-2">
+            <div className="d-flex align-items-center mb-2 me-3">
               <PopoverUser />
               <PopoverCart />
               <Nav.Link as={Link} to="favorites">
-                <HeartFill size={20} className="me-3" />
+                <HeartFill size={20} className="me-1" />
+                {favorites.length}
               </Nav.Link>
             </div>
             <Form className="d-flex">

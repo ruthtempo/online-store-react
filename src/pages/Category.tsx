@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, Col, Row } from "react-bootstrap";
-import { HeartFill } from "react-bootstrap-icons";
+import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { ProductCard } from "../components/ProductCard";
 
 export type Product = {
   id: number;
@@ -13,19 +13,9 @@ export type Product = {
 };
 
 export const Categories = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [units, setUnits] = useState(1);
-
   const { categoryName } = useParams();
 
-  const increaseUnits = () => {
-    setUnits(units + 1);
-  };
-  const decreaseUnits = () => {
-    if (units > 0) {
-      setUnits(units - 1);
-    }
-  };
+  const [products, setProducts] = useState<Product[]>([]);
 
   const fetchproducts = () => {
     fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
@@ -38,43 +28,15 @@ export const Categories = () => {
   }, [categoryName]);
 
   return (
-    <Row xs={1} md={2}>
-      {products.map((product) => (
-        <Col className="mb-3" md={6} lg={4} xxl={3}>
-          <Card className="h-100 shadow-sm text-center ">
-            <HeartFill
-              size={30}
-              fill={"pink"}
-              className="m-3 d-flex align-self-end"
-            />
-            <Card.Body className="d-flex flex-column">
-              <div
-                style={{
-                  backgroundImage: `url(${product.image})`,
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  height: 200,
-                }}
-              ></div>
-              <Card.Title className="flex-grow-1 mt-3">
-                {product.title}
-              </Card.Title>
-              <Card.Subtitle className="mt-2">{product.price}$</Card.Subtitle>
-              <Card.Text className="d-flex flex-column align-items-center mt-3 flex-grow-0">
-                <ButtonGroup>
-                  <Button onClick={decreaseUnits}>-</Button>
-                  <Button variant="light" disabled>
-                    {units}
-                  </Button>
-                  <Button onClick={increaseUnits}>+</Button>
-                </ButtonGroup>
-                <Button className="mt-3">Add to Cart</Button>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    <div>
+      <h5 className="text-center display-5 text-light mb-4">{categoryName}</h5>
+      <Row xs={1} md={3}>
+        {products.map((product) => (
+          <Col className="mb-3" md={6} lg={4} xxl={3}>
+            <ProductCard product={product} />
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 };
