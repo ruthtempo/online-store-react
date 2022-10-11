@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export type NewUser = {
+  userId: number;
   name: string;
   email: string;
   password: string;
@@ -20,9 +21,13 @@ export const Register = () => {
   } = useForm<NewUser>();
 
   const onSubmit = (data: NewUser) => {
+    const userId = Math.floor(Math.random() * 100);
     let existingUsers = localStorage.getItem("users");
     const userArr: NewUser[] = existingUsers ? JSON.parse(existingUsers) : [];
-    localStorage.setItem("users", JSON.stringify(userArr.concat(data)));
+    localStorage.setItem(
+      "users",
+      JSON.stringify(userArr.concat({ ...data, userId: userId }))
+    );
     navigate("/");
   };
 
