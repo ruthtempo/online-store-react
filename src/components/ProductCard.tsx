@@ -22,7 +22,7 @@ export const ProductCard = (p: { product: Product }) => {
         <HeartFill
           cursor="pointer"
           size={30}
-          fill={"pink"}
+          fill={"#C779D0"}
           className="m-3 d-flex align-self-end"
           onClick={() => toggleFavorites(p.product)}
         />
@@ -30,7 +30,7 @@ export const ProductCard = (p: { product: Product }) => {
         <Heart
           cursor="pointer"
           size={30}
-          fill={"pink"}
+          fill={"#C779D0"}
           className="m-3 d-flex align-self-end"
           onClick={() => toggleFavorites(p.product)}
         />
