@@ -8,17 +8,35 @@ export const Cart = () => {
   return (
     <Row>
       <Col md={3}>
-        {cart.map((cartElem) => (
-          <div>
-            <ProductCard product={cartElem.product} />
-            <Button
-              className="mt-3"
-              onClick={() => removeFromCart(cartElem.product)}
-            >
-              Remove from Cart
-            </Button>
-          </div>
-        ))}
+        {cart.length < 1 ? (
+          <Card>Your cart is empty </Card>
+        ) : (
+          cart.map((cartProduct) => (
+            <div>
+              <Card className="h-100 shadow-sm text-center ">
+                <Card.Body className="d-flex flex-column">
+                  <Card.Title>{cartProduct.title}</Card.Title>
+                  <div
+                    style={{
+                      backgroundImage: `url(${cartProduct.image})`,
+                      backgroundSize: "contain",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      height: "10em",
+                    }}
+                  ></div>
+                  <p>Amount:</p>
+                  <Button
+                    className="mt-3"
+                    onClick={() => removeFromCart(cartProduct)}
+                  >
+                    Remove from Cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            </div>
+          ))
+        )}
       </Col>
       <Col md={4}>
         <Card>
@@ -27,7 +45,8 @@ export const Cart = () => {
       </Col>
       <Col md={4}>
         <Card>
-          <Card.Body>My Basket</Card.Body>
+          <Card.Title>My Basket</Card.Title>
+          <Card.Body></Card.Body>
         </Card>
       </Col>
     </Row>
