@@ -53,7 +53,7 @@ export const Navigation = () => {
               <PopoverCart />
               <Nav.Link as={Link} to="favorites">
                 <HeartFill size={20} fill={"#4d88ff"} className="me-1" />
-                {user ? favorites.length : <></>}
+                {user && favorites.length}
               </Nav.Link>
             </div>
           </Offcanvas.Body>

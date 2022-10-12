@@ -1,22 +1,15 @@
 import { useState } from "react";
-import { Button, ButtonGroup, Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
 import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 import { Product } from "../pages/Category";
+import { ButtonQuantity } from "./ButtonQuantity";
 
 export const ProductCard = (p: { product: Product }) => {
   const { favorites, toggleFavorites } = useFavorites();
   const { addToCart } = useCart();
   const [units, setUnits] = useState(1);
-  const increaseUnits = () => {
-    setUnits(units + 1);
-  };
-  const decreaseUnits = () => {
-    if (units > 0) {
-      setUnits(units - 1);
-    }
-  };
 
   return (
     <Card className="h-100 shadow-sm text-center ">
@@ -40,13 +33,7 @@ export const ProductCard = (p: { product: Product }) => {
         <Card.Title className="flex-grow-1 mt-3">{p.product.title}</Card.Title>
         <Card.Subtitle className="mt-2">{p.product.price} $</Card.Subtitle>
         <Card.Text className="d-flex flex-column align-items-center mt-3 flex-grow-0">
-          <ButtonGroup>
-            <Button onClick={decreaseUnits}>-</Button>
-            <Button variant="light" disabled>
-              {units}
-            </Button>
-            <Button onClick={increaseUnits}>+</Button>
-          </ButtonGroup>
+          <ButtonQuantity units={units} setUnits={setUnits} />
           <Button className="mt-3" onClick={() => addToCart(p.product, units)}>
             Add to Cart
           </Button>

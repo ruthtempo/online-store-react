@@ -21,14 +21,28 @@ export const CartContextProvider = (p: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<Cart[]>([]);
 
   function addToCart(product: Product, amount: number) {
-    const newCart = cart.concat({
-      id: product.id,
-      price: product.price,
-      title: product.title,
-      image: product.image,
-      quantity: amount,
-    });
-    setCart(newCart);
+    let index = cart.findIndex((cartProd) => cartProd.id === product.id);
+
+    if (index === -1) {
+      const newCart = cart.concat({
+        id: product.id,
+        price: product.price,
+        title: product.title,
+        image: product.image,
+        quantity: amount,
+      });
+      setCart(newCart);
+    } else {
+      const updatedCart = cart.map((cartProduct) => {
+        if (cartProduct.id === product.id) {
+          cartProduct.quantity += amount;
+        }
+        return cartProduct;
+      });
+      console.log("cart", updatedCart);
+
+      setCart(updatedCart);
+    }
   }
 
   function removeFromCart(product: Cart) {

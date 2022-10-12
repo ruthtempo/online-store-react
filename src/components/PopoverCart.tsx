@@ -15,7 +15,7 @@ export const PopoverCart = () => {
             {cart.length > 0 ? (
               <p>
                 You have {cart.length}
-                {cart.length > 1 ? " products" : " product"} in your{" "}
+                {cart.length > 1 ? " items" : " item"} in your{" "}
                 <Cart4 size={20} />
               </p>
             ) : (
