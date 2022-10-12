@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 import { useUser } from "../context/UserContext";
 import { PopoverCart } from "./PopoverCart";

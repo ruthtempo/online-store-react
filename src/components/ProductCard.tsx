@@ -7,7 +7,7 @@ import { Product } from "../pages/Category";
 
 export const ProductCard = (p: { product: Product }) => {
   const { favorites, toggleFavorites } = useFavorites();
-  const { cart, setCart, addToCart } = useCart();
+  const { addToCart } = useCart();
   const [units, setUnits] = useState(1);
   const increaseUnits = () => {
     setUnits(units + 1);
@@ -47,7 +47,7 @@ export const ProductCard = (p: { product: Product }) => {
             </Button>
             <Button onClick={increaseUnits}>+</Button>
           </ButtonGroup>
-          <Button className="mt-3" onClick={() => addToCart(p.product)}>
+          <Button className="mt-3" onClick={() => addToCart(p.product, units)}>
             Add to Cart
           </Button>
         </Card.Text>

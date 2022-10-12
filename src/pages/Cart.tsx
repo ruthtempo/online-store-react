@@ -1,10 +1,24 @@
-import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button, ButtonGroup, Card } from "react-bootstrap";
+import { ProductCard } from "../components/ProductCard";
+import { useCart } from "../context/CartContext";
 
 export const Cart = () => {
+  const { cart, removeFromCart } = useCart();
+
   return (
     <Row>
-      <Col>cart</Col>
+      {cart.map((cartElem) => (
+        <Col>
+          <ProductCard product={cartElem.product} />
+          <Button
+            className="mt-3"
+            onClick={() => removeFromCart(cartElem.product)}
+          >
+            Remove from Cart
+          </Button>
+        </Col>
+      ))}
+
       <Col>data form</Col>
       <Col>my basket</Col>
     </Row>
