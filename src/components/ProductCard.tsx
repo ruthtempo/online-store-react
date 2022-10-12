@@ -24,7 +24,7 @@ export const ProductCard = (p: { product: Product }) => {
         cursor="pointer"
         size={30}
         fill={favorites.includes(p.product) ? "#4d88ff" : "#ccddff"}
-        className="m-3 d-flex align-self-end"
+        className="mt-3 me-3 d-flex align-self-end"
         onClick={() => toggleFavorites(p.product)}
       />
       <Card.Body className="d-flex flex-column">
@@ -34,7 +34,7 @@ export const ProductCard = (p: { product: Product }) => {
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            height: 200,
+            height: "10em",
           }}
         ></div>
         <Card.Title className="flex-grow-1 mt-3">{p.product.title}</Card.Title>
