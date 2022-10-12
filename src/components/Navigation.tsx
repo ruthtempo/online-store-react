@@ -41,7 +41,7 @@ export const Navigation = () => {
             <Offcanvas.Title>My Store</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
+            <Nav className="justify-content-end pe-3">
               {categories.map((cat) => (
                 <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
                   {cat.toUpperCase()}
@@ -56,15 +56,6 @@ export const Navigation = () => {
                 {user ? favorites.length : <></>}
               </Nav.Link>
             </div>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
