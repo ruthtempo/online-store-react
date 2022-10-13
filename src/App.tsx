@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Cart } from "./pages/Cart";
@@ -7,6 +7,7 @@ import { Categories } from "./pages/Category";
 import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
+import buttons from "./img/smoke.jpg";
 
 function App() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -21,8 +22,9 @@ function App() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column justify-content-between">
+    <Container className="d-flex flex-column justify-content-between vh-100">
       <Navigation categories={categories} />
+
       <Routes>
         <Route path="/" element={<Home categories={categories} />} />
         <Route path="register" element={<Register />} />
@@ -32,10 +34,12 @@ function App() {
         <Route path="*" element={<p>Page does not exist</p>}></Route>
       </Routes>
 
-      <Row className="bg-light text-center">
+      <Row>
         <Col>
-          <h3 className="mt-2">Oh-My-Store</h3>
-          <p>Copyright 2022</p>
+          <Card className="bg-light text-center">
+            <h3 className="mt-2">Oh-My-Shop</h3>
+            <p>Copyright 2022</p>
+          </Card>
         </Col>
       </Row>
     </Container>

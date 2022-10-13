@@ -15,50 +15,48 @@ export const Home = (p: { categories: string[] }) => {
       <Row className="mb-2">
         <Col>
           <Card>
-            <Card.Body>
-              <Carousel>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={jewelry}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <h3>JEWELRY</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={womenClothing}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <h3>WOMEN'S CLOTHING</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={mensClothing}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <h3>MEN'S CLOTHING</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={electronics}
-                    alt="First slide"
-                  />
-                  <Carousel.Caption>
-                    <h3>ELECTRONICS</h3>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              </Carousel>
-            </Card.Body>
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={jewelry}
+                  alt="First slide"
+                />
+                <Carousel.Caption>
+                  <h3>JEWELRY</h3>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={womenClothing}
+                  alt="First slide"
+                />
+                <Carousel.Caption>
+                  <h3>WOMEN'S CLOTHING</h3>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={mensClothing}
+                  alt="First slide"
+                />
+                <Carousel.Caption>
+                  <h3>MEN'S CLOTHING</h3>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={electronics}
+                  alt="First slide"
+                />
+                <Carousel.Caption>
+                  <h3>ELECTRONICS</h3>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
           </Card>
         </Col>
       </Row>
@@ -74,14 +72,14 @@ export const Home = (p: { categories: string[] }) => {
                 backgroundPosition: "center",
               }}
             >
-              <Card.Body className="text-center text-white d-flex align-items-center justify-content-center">
+              <Card.Body className="text-center text-white d-flex align-items-center justify-content-center shadow-sm">
                 <Card.Title>{cat}</Card.Title>
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Row md={3} className="mb-4">
+      <Row md={3} className="mb-2">
         <Col lg={4} md={4}>
           <Card>
             <img src={image1} />

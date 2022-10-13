@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
+import buttons from "../img/smoke.jpg";
 
 export type Product = {
   id: number;
@@ -15,7 +16,7 @@ export type Product = {
 export const Categories = () => {
   const { categoryName } = useParams();
   const categoryNameUpperCased = categoryName
-    ? categoryName?.charAt(0).toUpperCase() + categoryName?.slice(1)
+    ? categoryName.toUpperCase()
     : categoryName;
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -31,7 +32,19 @@ export const Categories = () => {
 
   return (
     <div>
-      <h5 className="text-center display-5 mb-4">{categoryNameUpperCased}</h5>
+      <Card
+        className="mb-4 text-white mt-4"
+        style={{
+          backgroundImage: `url(${buttons})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        <h5 className="text-center display-6 mb-4 mt-4 text-white">
+          {categoryNameUpperCased}
+        </h5>
+      </Card>
       <Row xs={1} md={3}>
         {products.map((product) => (
           <Col className="mb-3" md={6} lg={4} xxl={3}>

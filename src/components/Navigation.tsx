@@ -12,7 +12,7 @@ export const Navigation = (p: { categories: string[] }) => {
   const { user } = useUser();
 
   return (
-    <Navbar expand="lg" bg="light" variant="light" className="mb-4">
+    <Navbar expand="lg" bg="light" variant="light">
       <Container fluid>
         <Navbar.Brand to="/" as={Link}>
           <img src={logo} width="100" height="100" />
@@ -23,7 +23,7 @@ export const Navigation = (p: { categories: string[] }) => {
             <Offcanvas.Title>BrandName</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="justify-content-end pe-3">
+            <Nav className="pe-3">
               {p.categories.map((cat) => (
                 <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
                   {cat.toUpperCase()}
