@@ -1,5 +1,5 @@
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
-import { Cart4, Trash3Fill } from "react-bootstrap-icons";
+import { BagHeart, Trash3Fill } from "react-bootstrap-icons";
 import { useCart } from "../context/CartContext";
 
 export const Cart = () => {
@@ -12,7 +12,7 @@ export const Cart = () => {
           <Card>
             <Card.Body className="text-center">
               <Card.Title>Your cart is empty</Card.Title>
-              <Cart4 size={60} />
+              <BagHeart size={60} />
             </Card.Body>
           </Card>
         ) : (

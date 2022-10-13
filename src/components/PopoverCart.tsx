@@ -1,5 +1,5 @@
 import { Nav, OverlayTrigger, Popover } from "react-bootstrap";
-import { Cart4 } from "react-bootstrap-icons";
+import { BagHeart, Cart4 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -21,7 +21,7 @@ export const PopoverCart = () => {
             ) : (
               <>
                 <h4>Your cart is empty</h4>
-                <Cart4 size={60} />
+                <BagHeart size={60} />
               </>
             )}
           </Popover.Body>
@@ -29,7 +29,7 @@ export const PopoverCart = () => {
       }
     >
       <Nav.Link as={Link} to="cart" className="me-3">
-        <Cart4 size={25} role={"button"} />
+        <BagHeart size={25} role={"button"} className="me-1" />
         {cart.length}
       </Nav.Link>
     </OverlayTrigger>

@@ -14,7 +14,9 @@ export type Product = {
 
 export const Categories = () => {
   const { categoryName } = useParams();
-
+  const categoryNameUpperCased = categoryName
+    ? categoryName?.charAt(0).toUpperCase() + categoryName?.slice(1)
+    : categoryName;
   const [products, setProducts] = useState<Product[]>([]);
 
   const fetchproducts = () => {
@@ -29,7 +31,7 @@ export const Categories = () => {
 
   return (
     <div>
-      <h5 className="text-center display-5 mb-4">{categoryName}</h5>
+      <h5 className="text-center display-5 mb-4">{categoryNameUpperCased}</h5>
       <Row xs={1} md={3}>
         {products.map((product) => (
           <Col className="mb-3" md={6} lg={4} xxl={3}>

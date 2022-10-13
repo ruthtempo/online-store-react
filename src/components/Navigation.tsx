@@ -1,48 +1,30 @@
-import { useEffect, useState } from "react";
-import {
-  Button,
-  Container,
-  Form,
-  Nav,
-  Navbar,
-  Offcanvas,
-} from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import { useFavorites } from "../context/FavoritesContext";
 import { useUser } from "../context/UserContext";
 import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
+import logo from "../img/logo.png";
 
-export const Navigation = () => {
-  const [categories, setCategories] = useState<string[]>([]);
+export const Navigation = (p: { categories: string[] }) => {
   const { favorites } = useFavorites();
   const { user } = useUser();
-
-  useEffect(() => {
-    const fetchProductCategories = () => {
-      fetch("https://fakestoreapi.com/products/categories")
-        .then((res) => res.json())
-        .then((json) => setCategories(json));
-    };
-    fetchProductCategories();
-  }, []);
 
   return (
     <Navbar expand="lg" bg="light" variant="light" className="mb-4">
       <Container fluid>
         <Navbar.Brand to="/" as={Link}>
-          Brand Name
+          <img src={logo} width="100" height="100" />
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Offcanvas placement="end">
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>My Store</Offcanvas.Title>
+            <Offcanvas.Title>BrandName</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="justify-content-end pe-3">
-              {categories.map((cat) => (
+              {p.categories.map((cat) => (
                 <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
                   {cat.toUpperCase()}
                 </Nav.Link>
