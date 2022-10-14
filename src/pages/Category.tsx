@@ -47,7 +47,7 @@ export const Categories = () => {
       </Card>
       <Row xs={1} md={3}>
         {products.map((product) => (
-          <Col className="mb-3" md={6} lg={4} xxl={4}>
+          <Col key={product.id} className="mb-3" md={6} lg={4} xxl={4}>
             <ProductCard product={product} />
           </Col>
         ))}
