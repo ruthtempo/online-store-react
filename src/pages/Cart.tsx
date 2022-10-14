@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
-import { BagHeart, Trash3Fill } from "react-bootstrap-icons";
+import { Bag, BagHeart, Trash3Fill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import buttons from "../img/smoke.jpg";
@@ -47,10 +47,7 @@ export const Cart = () => {
                 <Card.Title className="display-6 mb-3">
                   Your bag is empty
                 </Card.Title>
-                <div className="d-flex align-items-center">
-                  <BagHeart size={60} />
-                  <p className="h4">{cart.length}</p>
-                </div>
+                <Bag size={60} />
               </Card.Body>
             </Card>
           ) : (

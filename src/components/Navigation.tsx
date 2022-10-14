@@ -6,10 +6,13 @@ import { useUser } from "../context/UserContext";
 import { PopoverCart } from "./PopoverCart";
 import { PopoverUser } from "./PopoverUser";
 import logo from "../img/logo.png";
+import "animate.css";
+import { useState } from "react";
 
 export const Navigation = (p: { categories: string[] }) => {
   const { favorites } = useFavorites();
   const { user } = useUser();
+  const [hoveredElem, setHoveredElem] = useState(-1);
 
   return (
     <Navbar expand="lg" bg="light" variant="light" collapseOnSelect>
@@ -24,8 +27,16 @@ export const Navigation = (p: { categories: string[] }) => {
           </Offcanvas.Header>
           <Offcanvas.Body className="justify-content-end">
             <Nav className="pe-3 ">
-              {p.categories.map((cat) => (
+              {p.categories.map((cat, index) => (
                 <Nav.Link
+                  key={index}
+                  onMouseOver={() => setHoveredElem(index)}
+                  onMouseOut={() => setHoveredElem(-1)}
+                  className={
+                    hoveredElem === index
+                      ? "animate__animated animate__pulse"
+                      : ""
+                  }
                   as={Link}
                   href="#"
                   to={`category/${encodeURIComponent(cat)}`}
