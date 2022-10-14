@@ -34,14 +34,10 @@ function App() {
         <Route path="*" element={<p>Page does not exist</p>}></Route>
       </Routes>
 
-      <Row>
-        <Col>
-          <Card className="bg-light text-center">
-            <h3 className="mt-2">Oh-My-Shop</h3>
-            <p>Copyright 2022</p>
-          </Card>
-        </Col>
-      </Row>
+      <footer className="text-center py-5">
+        <p className="h3 mt-2">Oh-My-Shop</p>
+        <p>Copyright 2022</p>
+      </footer>
     </Container>
   );
 }

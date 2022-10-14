@@ -20,7 +20,7 @@ export const Navigation = (p: { categories: string[] }) => {
         <Navbar.Toggle />
         <Navbar.Offcanvas placement="end">
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>BrandName</Offcanvas.Title>
+            <Offcanvas.Title>Oh-My-Shop</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="pe-3">

@@ -33,13 +33,13 @@ export const CartContextProvider = (p: { children: React.ReactNode }) => {
       });
       setCart(newCart);
     } else {
-      const updatedCart = cart.map((cartProduct) => {
-        if (cartProduct.id === product.id) {
-          cartProduct.quantity += amount;
-        }
-        return cartProduct;
-      });
-      console.log("cart", updatedCart);
+      const updatedCart = cart.map((cartProduct) => ({
+        ...cartProduct,
+        quantity:
+          cartProduct.id === product.id
+            ? cartProduct.quantity + amount
+            : cartProduct.quantity,
+      }));
 
       setCart(updatedCart);
     }
