@@ -1,5 +1,5 @@
 import { Nav, OverlayTrigger, Popover } from "react-bootstrap";
-import { BagHeart, Cart4 } from "react-bootstrap-icons";
+import { Bag, BagHeart, BagHeartFill, Cart4 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -16,7 +16,7 @@ export const PopoverCart = () => {
               <p>
                 You have {cart.length}
                 {cart.length > 1 ? " items" : " item"} in your{" "}
-                <Cart4 size={20} />
+                <BagHeart size={20} />
               </p>
             ) : (
               <>
@@ -29,8 +29,14 @@ export const PopoverCart = () => {
       }
     >
       <Nav.Link as={Link} to="cart" href="#" className="me-3">
-        <BagHeart size={25} role={"button"} className="me-1" />
-        {cart.length}
+        {cart.length > 0 ? (
+          <>
+            <BagHeart size={25} role={"button"} className="me-1" />
+            {cart.length}
+          </>
+        ) : (
+          <Bag size={25} />
+        )}
       </Nav.Link>
     </OverlayTrigger>
   );

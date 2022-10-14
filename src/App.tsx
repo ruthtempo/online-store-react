@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Cart } from "./pages/Cart";
 import { Categories } from "./pages/Category";
 import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
+import { PaymentSuccess } from "./pages/PaymentSuccess";
 import { Register } from "./pages/Register";
-import buttons from "./img/smoke.jpg";
 
 function App() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -31,11 +31,12 @@ function App() {
         <Route path="favorites" element={<Favorites />} />
         <Route path="cart" element={<Cart />} />
         <Route path="category/:categoryName" element={<Categories />} />
+        <Route path="success" element={<PaymentSuccess />} />
         <Route path="*" element={<p>Page does not exist</p>}></Route>
       </Routes>
 
       <footer className="text-center py-5">
-        <p className="h3 mt-2">Oh-My-Shop</p>
+        <p className="h5 mt-2">Oh-My-Shop</p>
         <p>Copyright 2022</p>
       </footer>
     </Container>

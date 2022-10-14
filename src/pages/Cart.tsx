@@ -1,11 +1,31 @@
+import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { BagHeart, Trash3Fill } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import buttons from "../img/smoke.jpg";
 
 export const Cart = () => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, setCart } = useCart();
+  const navigate = useNavigate();
 
+  const total = cart.reduce(
+    (acc, product) => acc + parseFloat(product.price) * product.quantity,
+    0
+  );
+
+  const [validated, setValidated] = useState(false);
+  const handleSubmit = (e: React.BaseSyntheticEvent) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      setCart([]);
+      navigate("/success");
+    }
+    setValidated(true);
+  };
   return (
     <>
       <h3
@@ -17,15 +37,20 @@ export const Cart = () => {
           backgroundPosition: "center",
         }}
       >
-        My shopping Bag
+        My Shopping Bag
       </h3>
-      <Row className="d-flex justify-content-center mb-3">
-        <Col sm={5} className="mb-2">
+      <Row className="d-flex justify-content-center">
+        <Col sm={5} md={5} lg={4} className="mb-2">
           {cart.length === 0 ? (
-            <Card className="h-100">
+            <Card className="h-100 text-center">
               <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                <Card.Title className="display-6">Your bag is empty</Card.Title>
-                <BagHeart size={60} />
+                <Card.Title className="display-6 mb-3">
+                  Your bag is empty
+                </Card.Title>
+                <div className="d-flex align-items-center">
+                  <BagHeart size={60} />
+                  <p className="h4">{cart.length}</p>
+                </div>
               </Card.Body>
             </Card>
           ) : (
@@ -67,13 +92,20 @@ export const Cart = () => {
             ))
           )}
         </Col>
-        <Col>
-          <Card className="d-flex align-items-center">
-            <Card.Body>
+        <Col lg={4} md={7} className="mb-2">
+          <Card>
+            <Card.Header>
               <Card.Title className="text-center">
-                Payment & Shipment
+                Payment & Shipping
               </Card.Title>
-              <Form>
+            </Card.Header>
+            <Card.Body>
+              <Form
+                className="needs-validation"
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+              >
                 <FloatingLabel label="Full Name" className="mb-3">
                   <Form.Control required />
                 </FloatingLabel>
@@ -93,6 +125,7 @@ export const Cart = () => {
                     name="group1"
                     type="radio"
                     id="payment"
+                    required
                   />
                   <Form.Check
                     inline
@@ -112,8 +145,17 @@ export const Cart = () => {
                 <Form.Control
                   as="textarea"
                   placeholder="Leave a comment (Optional)"
-                  style={{ height: 200 }}
+                  style={{ height: 100 }}
                 />
+                <div className="text-center mt-2">
+                  Total: <p className="h3">{total} $</p>
+                  <Button
+                    className={`mb-2 ${cart.length < 1 ? "disabled" : ""}`}
+                    type="submit"
+                  >
+                    Confirm Purchase
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
           </Card>

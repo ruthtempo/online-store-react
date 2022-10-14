@@ -13,7 +13,7 @@ export const Navigation = (p: { categories: string[] }) => {
 
   return (
     <Navbar expand="lg" bg="light" variant="light" collapseOnSelect>
-      <Container fluid>
+      <Container>
         <Navbar.Brand to="/" as={Link}>
           <img src={logo} width="100" height="100" />
         </Navbar.Brand>
@@ -22,8 +22,8 @@ export const Navigation = (p: { categories: string[] }) => {
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>Oh-My-Shop</Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="pe-3">
+          <Offcanvas.Body className="justify-content-end">
+            <Nav className="pe-3 ">
               {p.categories.map((cat) => (
                 <Nav.Link
                   as={Link}
