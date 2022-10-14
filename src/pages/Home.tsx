@@ -18,11 +18,7 @@ export const Home = (p: { categories: string[] }) => {
             <Carousel>
               <Carousel.Item>
                 <Ratio aspectRatio="16x9">
-                  <img
-                    className="d-block w-100"
-                    src={jewelry}
-                    alt="First slide"
-                  />
+                  <img className="d-block w-100" src={jewelry} alt="jewelry" />
                 </Ratio>
                 <Carousel.Caption>
                   <h3>JEWELRY</h3>
@@ -33,7 +29,7 @@ export const Home = (p: { categories: string[] }) => {
                   <img
                     className="d-block w-100"
                     src={womenClothing}
-                    alt="First slide"
+                    alt="womens clothing"
                   />
                 </Ratio>
                 <Carousel.Caption>
@@ -45,7 +41,7 @@ export const Home = (p: { categories: string[] }) => {
                   <img
                     className="d-block w-100"
                     src={mensClothing}
-                    alt="First slide"
+                    alt="mensClothing"
                   />
                 </Ratio>
                 <Carousel.Caption>
@@ -57,7 +53,7 @@ export const Home = (p: { categories: string[] }) => {
                   <img
                     className="d-block w-100"
                     src={electronics}
-                    alt="First slide"
+                    alt="electronics"
                   />
                 </Ratio>
                 <Carousel.Caption>
@@ -90,17 +86,17 @@ export const Home = (p: { categories: string[] }) => {
       <Row md={3} className="mb-2">
         <Col lg={4} md={4}>
           <Card>
-            <img src={image1} />
+            <img src={image1} alt="dresses" />
           </Card>
         </Col>
         <Col lg={4} md={4}>
           <Card>
-            <img src={image2} />
+            <img src={image2} alt="jeans" />
           </Card>
         </Col>
         <Col lg={4} md={4}>
           <Card>
-            <img src={image3} />
+            <img src={image3} alt="models" />
           </Card>
         </Col>
       </Row>

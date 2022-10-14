@@ -18,7 +18,7 @@ export const Navigation = (p: { categories: string[] }) => {
     <Navbar expand="lg" bg="light" variant="light" collapseOnSelect>
       <Container>
         <Navbar.Brand to="/" as={Link}>
-          <img src={logo} width="100" height="100" />
+          <img src={logo} width="100" height="100" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Offcanvas placement="end">

@@ -1,5 +1,5 @@
 import { Nav, OverlayTrigger, Popover } from "react-bootstrap";
-import { Bag, BagHeart, BagHeartFill, Cart4 } from "react-bootstrap-icons";
+import { Bag, BagHeart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 

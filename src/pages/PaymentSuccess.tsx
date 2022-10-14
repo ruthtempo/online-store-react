@@ -12,7 +12,7 @@ export const PaymentSuccess = () => {
             <CheckCircleFill size={50} className="mb-4" fill="#CFDEF3" />
             <Card.Title>Payment Successful!</Card.Title>
             <Card.Text> Thank you for shopping with us</Card.Text>
-            <img src={success} width="200" />
+            <img src={success} alt="shopper-img" width="200" />
             <Link to="/">
               <Button className="mt-4">Continue Shopping</Button>
             </Link>

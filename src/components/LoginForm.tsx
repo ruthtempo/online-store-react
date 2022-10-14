@@ -5,7 +5,7 @@ import { useUser } from "../context/UserContext";
 import { NewUser as User } from "../pages/Register";
 
 export const LoginForm = () => {
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
   const { register, handleSubmit } = useForm<User>();
 
   const logIn = (data: User) => {
