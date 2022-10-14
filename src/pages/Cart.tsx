@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
-import { Bag, BagHeart, Trash3Fill } from "react-bootstrap-icons";
+import { Bag, Trash3Fill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import buttons from "../img/smoke.jpg";

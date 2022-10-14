@@ -6,17 +6,26 @@ import { useFavorites } from "../context/FavoritesContext";
 import { Product } from "../pages/Category";
 import { ButtonQuantity } from "./ButtonQuantity";
 import "animate.css";
+import { useUser } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const ProductCard = (p: { product: Product }) => {
   const { favorites, toggleFavorites } = useFavorites();
   const { addToCart } = useCart();
   const [units, setUnits] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
+  const { user } = useUser();
+  const navigate = useNavigate();
 
-  function handleClick(event: React.MouseEvent<SVGElement>) {
-    toggleFavorites(p.product);
-    setIsClicked((current) => !current);
+  function handleAddToFavs(event: React.MouseEvent<SVGElement>) {
+    if (user) {
+      toggleFavorites(p.product);
+      setIsClicked((current) => !current);
+    } else {
+      navigate("/register");
+    }
   }
+
   return (
     <Card className="h-100 shadow-sm text-center ">
       <HeartFill
@@ -26,7 +35,7 @@ export const ProductCard = (p: { product: Product }) => {
         className={`mt-3 me-3 d-flex align-self-end ${
           isClicked ? "animate__animated animate__heartBeat" : ""
         }`}
-        onClick={handleClick}
+        onClick={handleAddToFavs}
       />
       <Card.Body className="d-flex flex-column">
         <div
