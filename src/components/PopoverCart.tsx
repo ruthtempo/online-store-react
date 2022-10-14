@@ -20,7 +20,7 @@ export const PopoverCart = () => {
               </p>
             ) : (
               <>
-                <h4>Your cart is empty</h4>
+                <h4>Your shopping bag is empty</h4>
                 <BagHeart size={60} />
               </>
             )}
@@ -28,7 +28,7 @@ export const PopoverCart = () => {
         </Popover>
       }
     >
-      <Nav.Link as={Link} to="cart" className="me-3">
+      <Nav.Link as={Link} to="cart" href="#" className="me-3">
         <BagHeart size={25} role={"button"} className="me-1" />
         {cart.length}
       </Nav.Link>

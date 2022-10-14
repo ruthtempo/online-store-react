@@ -20,11 +20,11 @@ export const Favorites = () => {
       </Row>
     </div>
   ) : (
-    <div className="d-flex flex-column mt-4 ">
-      <Alert className="d-flex align-self-center">
-        Create an account to save to favorites
-      </Alert>
-      <Register />
-    </div>
+    <Row className="mt-4 ">
+      <Col>
+        <Alert>Create an account to save to favorites</Alert>
+        <Register />
+      </Col>
+    </Row>
   );
 };

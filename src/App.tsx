@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <Container className="d-flex flex-column justify-content-between vh-100">
+    <Container className="vh-100">
       <Navigation categories={categories} />
 
       <Routes>

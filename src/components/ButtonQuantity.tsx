@@ -15,11 +15,15 @@ export const ButtonQuantity = (p: {
   };
   return (
     <ButtonGroup>
-      <Button onClick={decreaseUnits}>-</Button>
+      <Button onClick={decreaseUnits} variant="light">
+        -
+      </Button>
       <Button variant="light" disabled>
         {p.units}
       </Button>
-      <Button onClick={increaseUnits}>+</Button>
+      <Button onClick={increaseUnits} variant="light">
+        +
+      </Button>
     </ButtonGroup>
   );
 };

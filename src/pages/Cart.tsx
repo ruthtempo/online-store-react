@@ -20,7 +20,7 @@ export const Cart = () => {
         My shopping Bag
       </h3>
       <Row className="d-flex justify-content-center mb-3">
-        <Col>
+        <Col sm={5} className="mb-2">
           {cart.length === 0 ? (
             <Card className="h-100">
               <Card.Body className="d-flex flex-column justify-content-center align-items-center">
@@ -68,7 +68,7 @@ export const Cart = () => {
           )}
         </Col>
         <Col>
-          <Card>
+          <Card className="d-flex align-items-center">
             <Card.Body>
               <Card.Title className="text-center">
                 Payment & Shipment
@@ -81,12 +81,10 @@ export const Cart = () => {
                   <Form.Control required />
                 </FloatingLabel>
                 <FloatingLabel label="Address" className="mb-3">
-                  <Form.Label>Address</Form.Label>
-                  <Form.Control placeholder="shipping address" required />
+                  <Form.Control required />
                 </FloatingLabel>
                 <FloatingLabel label="Country" className="mb-3">
-                  <Form.Label>Country</Form.Label>
-                  <Form.Control placeholder="Country" required />
+                  <Form.Control required />
                 </FloatingLabel>
                 <div className="mb-3">
                   <Form.Check

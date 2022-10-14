@@ -33,7 +33,7 @@ export const Categories = () => {
   return (
     <div>
       <Card
-        className="mb-4 text-white mt-4"
+        className="mb-2 text-white mt-2"
         style={{
           backgroundImage: `url(${buttons})`,
           backgroundSize: "cover",
@@ -47,7 +47,7 @@ export const Categories = () => {
       </Card>
       <Row xs={1} md={3}>
         {products.map((product) => (
-          <Col className="mb-3" md={6} lg={4} xxl={3}>
+          <Col className="mb-3" md={6} lg={4} xxl={4}>
             <ProductCard product={product} />
           </Col>
         ))}
