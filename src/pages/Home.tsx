@@ -1,4 +1,4 @@
-import { Card, Carousel, Col, Row } from "react-bootstrap";
+import { Card, Carousel, Col, Ratio, Row } from "react-bootstrap";
 import image3 from "../img/boys.jpg";
 import image1 from "../img/dresses.jpg";
 import electronics from "../img/electronics.jpg";
@@ -17,41 +17,49 @@ export const Home = (p: { categories: string[] }) => {
           <Card>
             <Carousel>
               <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={jewelry}
-                  alt="First slide"
-                />
+                <Ratio aspectRatio="16x9">
+                  <img
+                    className="d-block w-100"
+                    src={jewelry}
+                    alt="First slide"
+                  />
+                </Ratio>
                 <Carousel.Caption>
                   <h3>JEWELRY</h3>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={womenClothing}
-                  alt="First slide"
-                />
+                <Ratio aspectRatio="16x9">
+                  <img
+                    className="d-block w-100"
+                    src={womenClothing}
+                    alt="First slide"
+                  />
+                </Ratio>
                 <Carousel.Caption>
                   <h3>WOMEN'S CLOTHING</h3>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={mensClothing}
-                  alt="First slide"
-                />
+                <Ratio aspectRatio="16x9">
+                  <img
+                    className="d-block w-100"
+                    src={mensClothing}
+                    alt="First slide"
+                  />
+                </Ratio>
                 <Carousel.Caption>
                   <h3>MEN'S CLOTHING</h3>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={electronics}
-                  alt="First slide"
-                />
+                <Ratio aspectRatio="16x9">
+                  <img
+                    className="d-block w-100"
+                    src={electronics}
+                    alt="First slide"
+                  />
+                </Ratio>
                 <Carousel.Caption>
                   <h3>ELECTRONICS</h3>
                 </Carousel.Caption>
