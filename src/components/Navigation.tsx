@@ -34,7 +34,7 @@ export const Navigation = (p: { categories: string[] }) => {
                   onMouseOut={() => setHoveredElem(-1)}
                   className={
                     hoveredElem === index
-                      ? "animate__animated animate__pulse"
+                      ? "animate__animated animate__swing"
                       : ""
                   }
                   as={Link}
