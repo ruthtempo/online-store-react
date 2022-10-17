@@ -13,7 +13,9 @@ export const ProductCard = (p: { product: Product }) => {
   const { favorites, toggleFavorites } = useFavorites();
   const { addToCart } = useCart();
   const [units, setUnits] = useState(1);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(
+    favorites.some((favProd) => favProd.id == p.product.id)
+  );
   const { user } = useUser();
   const navigate = useNavigate();
 
@@ -31,7 +33,11 @@ export const ProductCard = (p: { product: Product }) => {
       <HeartFill
         cursor="pointer"
         size={30}
-        fill={favorites.includes(p.product) ? "#4d88ff" : "#ccddff"}
+        fill={
+          favorites.some((favProd) => favProd.id == p.product.id)
+            ? "#4d88ff"
+            : "#ccddff"
+        }
         className={`mt-3 me-3 d-flex align-self-end ${
           isClicked ? "animate__animated animate__heartBeat" : ""
         }`}

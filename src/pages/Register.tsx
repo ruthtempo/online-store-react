@@ -1,6 +1,7 @@
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LoginForm } from "../components/LoginForm";
 import { Product } from "./Category";
 
 export type NewUser = {
@@ -102,9 +103,12 @@ export const Register = () => {
                   {errors.confirmPassword?.message}
                 </Form.Control.Feedback>
               </FloatingLabel>
-              <Button className="mt-3" type="submit">
+              <Button className="my-3" type="submit">
                 Register
               </Button>
+              <p>or </p>
+              <Card.Title>Log in</Card.Title>
+              <LoginForm />
             </Form>
           </Card.Body>
         </Card>

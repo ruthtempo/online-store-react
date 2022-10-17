@@ -1,5 +1,6 @@
 import { Button, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { useFavorites } from "../context/FavoritesContext";
 import { useUser } from "../context/UserContext";
 import { LoginForm } from "./LoginForm";
@@ -23,6 +24,12 @@ export const PopoverUser = () => {
           <Popover.Header as="h3">You are not logged in</Popover.Header>
           <Popover.Body>
             <LoginForm />
+            <p className="mt-2">
+              Don't have an account?
+              <Link className="text-decoration-none ms-2" to="/register">
+                Register
+              </Link>
+            </p>
           </Popover.Body>
         </Popover>
       }

@@ -1,8 +1,9 @@
-import { Alert, Col, Row } from "react-bootstrap";
+import { Alert, Card, Col, Row } from "react-bootstrap";
 import { ProductCard } from "../components/ProductCard";
 import { useFavorites } from "../context/FavoritesContext";
 import { useUser } from "../context/UserContext";
 import { Register } from "./Register";
+import buttons from "../img/smoke.jpg";
 
 export const Favorites = () => {
   const { user } = useUser();
@@ -10,14 +11,30 @@ export const Favorites = () => {
 
   return user ? (
     <div>
-      <h5 className="text-center display-4">My Favorites</h5>
-      <Row xs={1} md={2}>
-        {favorites.map((favProduct) => (
-          <Col className="mb-3" md={4} lg={3} xxl={3}>
-            <ProductCard product={favProduct} />
-          </Col>
-        ))}
-      </Row>
+      <Card
+        className="mb-2 text-white mt-2"
+        style={{
+          backgroundImage: `url(${buttons})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+        }}
+      >
+        <h5 className="text-center display-6 mb-4 mt-4 text-white">
+          My Favorites
+        </h5>
+      </Card>
+      {favorites.length > 0 ? (
+        favorites.map((favProduct) => (
+          <Row xs={1} md={2}>
+            <Col className="mb-3" md={4} lg={3} xxl={3}>
+              <ProductCard product={favProduct} />
+            </Col>
+          </Row>
+        ))
+      ) : (
+        <h4 className="mt-4 text-center">You have no favorites yet.</h4>
+      )}
     </div>
   ) : (
     <Row className="mt-4 ">

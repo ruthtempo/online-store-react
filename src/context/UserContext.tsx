@@ -12,7 +12,7 @@ export const UserContextProvider = (p: { children: React.ReactNode }) => {
   function checkIfLoggedUser() {
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
-      const userObject = JSON.parse(currentUser);
+      const userObject: User = JSON.parse(currentUser);
       setUser(userObject);
     }
   }

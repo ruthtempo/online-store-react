@@ -1,4 +1,4 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
@@ -20,32 +20,15 @@ export const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit(logIn)}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Enter email"
-          {...register("email")}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        />
-      </Form.Group>
-
+      <FloatingLabel label="Enter email" className="mb-3">
+        <Form.Control type="email" {...register("email")} />
+      </FloatingLabel>
+      <FloatingLabel label="Enter Password" className="mb-3">
+        <Form.Control type="password" {...register("password")} />
+      </FloatingLabel>
       <Button variant="primary" type="submit">
         Log In
       </Button>
-      <p className="mt-2">
-        Don't have an account?
-        <Link className="text-decoration-none" to="/register">
-          Register
-        </Link>
-      </p>
     </Form>
   );
 };
