@@ -1,4 +1,5 @@
-import { Card, Carousel, Col, Ratio, Row } from "react-bootstrap";
+import { Card, Carousel, Col, Nav, Ratio, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import image3 from "../img/boys.jpg";
 import image1 from "../img/dresses.jpg";
 import electronics from "../img/electronics.jpg";
@@ -9,7 +10,6 @@ import buttons from "../img/smoke.jpg";
 import womenClothing from "../img/womenClothing.jpg";
 
 export const Home = (p: { categories: string[] }) => {
-  const categories = p.categories.map((cat) => cat.toUpperCase());
   return (
     <>
       <Row className="mb-2">
@@ -65,21 +65,23 @@ export const Home = (p: { categories: string[] }) => {
         </Col>
       </Row>
       <Row className="mb-3">
-        {categories.map((cat) => (
+        {p.categories.map((cat) => (
           <Col sm={3} className="mb-2">
-            <Card
-              className="h-100"
-              style={{
-                backgroundImage: `url(${buttons})`,
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            >
-              <Card.Body className="text-center text-white d-flex align-items-center justify-content-center shadow-sm">
-                <Card.Title>{cat}</Card.Title>
-              </Card.Body>
-            </Card>
+            <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
+              <Card
+                className="h-100"
+                style={{
+                  backgroundImage: `url(${buttons})`,
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              >
+                <Card.Body className="text-center text-white d-flex align-items-center justify-content-center shadow-sm">
+                  <Card.Title>{cat.toUpperCase()}</Card.Title>
+                </Card.Body>
+              </Card>
+            </Nav.Link>
           </Col>
         ))}
       </Row>
