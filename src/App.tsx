@@ -6,6 +6,7 @@ import { Cart } from "./pages/Cart";
 import { Categories } from "./pages/Category";
 import { Favorites } from "./pages/Favorites";
 import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
 import { PaymentSuccess } from "./pages/PaymentSuccess";
 import { Register } from "./pages/Register";
 
@@ -32,11 +33,11 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="category/:categoryName" element={<Categories />} />
         <Route path="success" element={<PaymentSuccess />} />
-        <Route path="*" element={<p>Page does not exist</p>}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
       <footer className="text-center py-5">
-        <p className="h5 mt-2">Oh-My-Shop</p>
+        <p className="h6 mt-2">Oh-My-Shop</p>
         <p>Copyright 2022</p>
       </footer>
     </Container>
