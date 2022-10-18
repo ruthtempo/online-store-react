@@ -1,4 +1,4 @@
-import { Button, Nav, OverlayTrigger, Popover } from "react-bootstrap";
+import { Button, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { isLoggedIn, useUser } from "../context/UserContext";

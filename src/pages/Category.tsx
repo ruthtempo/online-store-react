@@ -20,13 +20,12 @@ export const Categories = () => {
     : categoryName;
   const [products, setProducts] = useState<Product[]>([]);
 
-  const fetchproducts = () => {
-    fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  };
-
   useEffect(() => {
+    const fetchproducts = () => {
+      fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
+        .then((res) => res.json())
+        .then((json) => setProducts(json));
+    };
     fetchproducts();
   }, [categoryName]);
 
