@@ -48,9 +48,8 @@ export const UserContextProvider = (p: { children: React.ReactNode }) => {
   /// cart subcontext
 
   function addToCart(product: Product, amount: number) {
+    let index = user.cart.findIndex((cartProd) => cartProd.id === product.id);
     if (isLoggedIn(user)) {
-      let index = user.cart.findIndex((cartProd) => cartProd.id === product.id);
-
       const updatedUser: User = {
         ...user,
         cart:
@@ -71,6 +70,28 @@ export const UserContextProvider = (p: { children: React.ReactNode }) => {
               })),
       };
 
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+      setUser(updatedUser);
+    } else {
+      const updatedUser: Anonymous = {
+        cart:
+          index === -1
+            ? user.cart.concat({
+                id: product.id,
+                price: product.price,
+                title: product.title,
+                image: product.image,
+                quantity: amount,
+              })
+            : user.cart.map((cartProduct) => ({
+                ...cartProduct,
+                quantity:
+                  cartProduct.id === product.id
+                    ? cartProduct.quantity + amount
+                    : cartProduct.quantity,
+              })),
+      };
       localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 
       setUser(updatedUser);

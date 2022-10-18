@@ -1,26 +1,24 @@
 import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { HeartFill } from "react-bootstrap-icons";
-import { useCart } from "../context/CartContext";
-import { useFavorites } from "../context/FavoritesContext";
 import { Product } from "../pages/Category";
 import { ButtonQuantity } from "./ButtonQuantity";
 import "animate.css";
-import { useUser } from "../context/UserContext";
+import { isLoggedIn, useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export const ProductCard = (p: { product: Product }) => {
-  const { favorites, toggleFavorites } = useFavorites();
-  const { addToCart } = useCart();
+  const { user, toggleFavorites, addToCart } = useUser();
+
   const [units, setUnits] = useState(1);
   const [isClicked, setIsClicked] = useState(
-    favorites.some((favProd) => favProd.id == p.product.id)
+    isLoggedIn(user) &&
+      user.favorites.some((favProd) => favProd.id === p.product.id)
   );
-  const { user } = useUser();
   const navigate = useNavigate();
 
   function handleAddToFavs(event: React.MouseEvent<SVGElement>) {
-    if (user) {
+    if (isLoggedIn(user)) {
       toggleFavorites(p.product);
       setIsClicked((current) => !current);
     } else {
@@ -34,7 +32,8 @@ export const ProductCard = (p: { product: Product }) => {
         cursor="pointer"
         size={30}
         fill={
-          favorites.some((favProd) => favProd.id == p.product.id)
+          isLoggedIn(user) &&
+          user.favorites.some((favProd) => favProd.id === p.product.id)
             ? "#4d88ff"
             : "#ccddff"
         }

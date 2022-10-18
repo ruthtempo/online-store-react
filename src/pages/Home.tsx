@@ -66,7 +66,7 @@ export const Home = (p: { categories: string[] }) => {
       </Row>
       <Row className="mb-3">
         {p.categories.map((cat) => (
-          <Col sm={3} className="mb-2">
+          <Col sm={6} lg={6} xxl={3} className="mb-2">
             <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>
               <Card
                 className="h-100"

@@ -1,21 +1,22 @@
 import { Nav, OverlayTrigger, Popover } from "react-bootstrap";
 import { Bag, BagHeart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext";
 
 export const PopoverCart = () => {
-  const { cart } = useCart();
+  const { user } = useUser();
+
   return (
     <OverlayTrigger
-      trigger="hover"
+      trigger="focus"
       placement="bottom"
       overlay={
         <Popover>
           <Popover.Body className="text-center">
-            {cart.length > 0 ? (
+            {user.cart.length > 0 ? (
               <p>
-                You have {cart.length}
-                {cart.length > 1 ? " items" : " item"} in your{" "}
+                You have {user.cart.length}
+                {user.cart.length > 1 ? " items" : " item"} in your{" "}
                 <BagHeart size={20} />
               </p>
             ) : (
@@ -29,13 +30,13 @@ export const PopoverCart = () => {
       }
     >
       <Nav.Link as={Link} to="cart" href="#" className="me-3">
-        {cart.length > 0 ? (
+        {user.cart.length > 0 ? (
           <>
-            <BagHeart size={25} role={"button"} className="me-1" />
-            {cart.length}
+            <BagHeart size={25} role="button" className="me-1" />
+            {user.cart.length}
           </>
         ) : (
-          <Bag size={25} />
+          <Bag size={25} role="button" />
         )}
       </Nav.Link>
     </OverlayTrigger>

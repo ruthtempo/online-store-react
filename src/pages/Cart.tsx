@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { Bag, Trash3Fill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { useUser } from "../context/UserContext";
 import buttons from "../img/smoke.jpg";
 
 export const Cart = () => {
-  const { cart, removeFromCart, setCart } = useCart();
+  const { removeFromCart, user } = useUser();
   const navigate = useNavigate();
 
-  const total = cart.reduce(
+  const total = user?.cart.reduce(
     (acc, product) => acc + parseFloat(product.price) * product.quantity,
     0
   );
@@ -21,7 +21,6 @@ export const Cart = () => {
       e.preventDefault();
       e.stopPropagation();
     } else {
-      setCart([]);
       navigate("/success");
     }
     setValidated(true);
@@ -41,7 +40,7 @@ export const Cart = () => {
       </h3>
       <Row className="d-flex justify-content-center">
         <Col sm={5} md={5} lg={4} className="mb-2">
-          {cart.length === 0 ? (
+          {user.cart.length === 0 ? (
             <Card className="h-100 text-center">
               <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                 <Card.Title className="display-6 mb-3">
@@ -51,7 +50,7 @@ export const Cart = () => {
               </Card.Body>
             </Card>
           ) : (
-            cart.map((cartProduct) => (
+            user.cart.map((cartProduct) => (
               <Card className=" shadow-sm text-center mb-2">
                 <Card.Body className="d-flex flex-column">
                   <Card.Title>{cartProduct.title}</Card.Title>
@@ -147,7 +146,7 @@ export const Cart = () => {
                 <div className="text-center mt-2">
                   Total: <p className="h3">{total} $</p>
                   <Button
-                    className={`mb-2 ${cart.length < 1 ? "disabled" : ""}`}
+                    className={`mb-2 ${user.cart.length < 1 ? "disabled" : ""}`}
                     type="submit"
                   >
                     Confirm Purchase

@@ -1,27 +1,27 @@
-import { Button, OverlayTrigger, Popover } from "react-bootstrap";
+import { Button, Nav, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { useFavorites } from "../context/FavoritesContext";
-import { useUser } from "../context/UserContext";
+import { isLoggedIn, useUser } from "../context/UserContext";
 import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
   const { user, setUser } = useUser();
-  const { setFavorites } = useFavorites();
 
   const logOut = () => {
     localStorage.removeItem("currentUser");
-    setUser(null);
-    setFavorites([]);
+    setUser({ cart: [] });
   };
 
-  return !user ? (
+  return !isLoggedIn(user) ? (
     <OverlayTrigger
+      rootClose
       trigger="click"
       placement="bottom"
       overlay={
         <Popover>
-          <Popover.Header as="h3">You are not logged in</Popover.Header>
+          <Popover.Header as="h3" className="text-center">
+            You are not logged in
+          </Popover.Header>
           <Popover.Body>
             <LoginForm />
             <p className="mt-2">
@@ -34,10 +34,11 @@ export const PopoverUser = () => {
         </Popover>
       }
     >
-      <PersonFill size={25} className="me-3" role={"button"} />
+      <PersonFill size={25} className="me-3" role="button" />
     </OverlayTrigger>
   ) : (
     <OverlayTrigger
+      rootClose
       trigger="click"
       placement="bottom"
       overlay={
@@ -51,7 +52,7 @@ export const PopoverUser = () => {
         </Popover>
       }
     >
-      <PersonFill size={25} className="me-3" role={"button"} />
+      <PersonFill size={25} className="me-3" role="button" />
     </OverlayTrigger>
   );
 };

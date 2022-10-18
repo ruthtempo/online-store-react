@@ -1,15 +1,13 @@
 import { Alert, Card, Col, Row } from "react-bootstrap";
 import { ProductCard } from "../components/ProductCard";
-import { useFavorites } from "../context/FavoritesContext";
-import { useUser } from "../context/UserContext";
+import { isLoggedIn, useUser } from "../context/UserContext";
 import { Register } from "./Register";
 import buttons from "../img/smoke.jpg";
 
 export const Favorites = () => {
   const { user } = useUser();
-  const { favorites } = useFavorites();
 
-  return user ? (
+  return isLoggedIn(user) ? (
     <div>
       <Card
         className="mb-2 text-white mt-2"
@@ -24,14 +22,14 @@ export const Favorites = () => {
           My Favorites
         </h5>
       </Card>
-      {favorites.length > 0 ? (
-        favorites.map((favProduct) => (
-          <Row xs={1} md={2}>
+      {user.favorites.length > 0 ? (
+        <Row xs={1} md={2}>
+          {user.favorites.map((favProduct) => (
             <Col className="mb-3" md={4} lg={3} xxl={3}>
               <ProductCard product={favProduct} />
             </Col>
-          </Row>
-        ))
+          ))}
+        </Row>
       ) : (
         <h4 className="mt-4 text-center">You have no favorites yet.</h4>
       )}

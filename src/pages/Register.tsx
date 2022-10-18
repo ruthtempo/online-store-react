@@ -1,16 +1,15 @@
 import { Button, Card, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm";
-import { Product } from "./Category";
+import { User } from "../context/UserContext";
 
 export type NewUser = {
-  userId: number;
+  id: number;
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
-  favoriteItems: Product[];
 };
 
 export const Register = () => {
@@ -25,13 +24,21 @@ export const Register = () => {
   const onSubmit = (data: NewUser) => {
     const userId = Math.floor(Math.random() * 100);
     let existingUsers = localStorage.getItem("users");
-    const userArr: NewUser[] = existingUsers ? JSON.parse(existingUsers) : [];
+    const userArr: User[] = existingUsers ? JSON.parse(existingUsers) : [];
     localStorage.setItem(
       "users",
       JSON.stringify(
-        userArr.concat({ ...data, userId: userId, favoriteItems: [] })
+        userArr.concat({
+          id: userId,
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          favorites: [],
+          cart: [],
+        })
       )
     );
+
     navigate("/");
   };
 
@@ -106,10 +113,10 @@ export const Register = () => {
               <Button className="my-3" type="submit">
                 Register
               </Button>
-              <p>or </p>
-              <Card.Title>Log in</Card.Title>
-              <LoginForm />
             </Form>
+            <p>or </p>
+            <Card.Title>Log in</Card.Title>
+            <LoginForm />
           </Card.Body>
         </Card>
       </Col>
