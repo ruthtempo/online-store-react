@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, Button, FloatingLabel, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { User } from "../context/UserContext";
 
@@ -8,6 +9,7 @@ export const LoginForm = () => {
   const { setUser } = useUser();
   const { register, handleSubmit } = useForm<User>();
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const logIn = (data: User) => {
     const users = localStorage.getItem("users") ?? "[]";
@@ -17,10 +19,11 @@ export const LoginForm = () => {
     );
     if (matchingUser) {
       setUser(matchingUser);
+      localStorage.setItem("currentUser", JSON.stringify(matchingUser));
+      navigate("/");
     } else {
       setError(true);
     }
-    localStorage.setItem("currentUser", JSON.stringify(matchingUser));
   };
 
   return (
