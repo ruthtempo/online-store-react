@@ -21,8 +21,8 @@ export const PopoverCart = () => {
               </p>
             ) : (
               <>
-                <h4>Your shopping bag is empty</h4>
-                <Bag size={60} />
+                <p className="h5">Your bag is empty</p>
+                <Bag size={40} />
               </>
             )}
           </Popover.Body>
