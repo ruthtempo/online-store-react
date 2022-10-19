@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
 import buttons from "../img/smoke.jpg";
@@ -20,17 +20,27 @@ export const Categories = () => {
     : categoryName;
   const [products, setProducts] = useState<Product[]>([]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const fetchproducts = () => {
+      setIsLoading(true);
       fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
         .then((res) => res.json())
-        .then((json) => setProducts(json));
+        .then((json) => {
+          setProducts(json);
+          setIsLoading(false);
+        });
     };
     fetchproducts();
   }, [categoryName]);
 
-  return (
-    <div>
+  return isLoading ? (
+    <div className="d-flex justify-content-center mt-4 align-items-center">
+      <Spinner animation="border" variant="primary" />
+    </div>
+  ) : (
+    <>
       <Card
         className="mb-2 text-white mt-2"
         style={{
@@ -51,6 +61,6 @@ export const Categories = () => {
           </Col>
         ))}
       </Row>
-    </div>
+    </>
   );
 };
