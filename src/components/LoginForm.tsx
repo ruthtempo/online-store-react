@@ -33,10 +33,10 @@ export const LoginForm = () => {
       </Alert>
       <Form onSubmit={handleSubmit(logIn)}>
         <FloatingLabel label="Enter email" className="mb-3">
-          <Form.Control type="email" {...register("email")} />
+          <Form.Control type="email" {...register("email")} required />
         </FloatingLabel>
         <FloatingLabel label="Enter Password" className="mb-3">
-          <Form.Control type="password" {...register("password")} />
+          <Form.Control type="password" {...register("password")} required />
         </FloatingLabel>
         <Button variant="primary" type="submit">
           Log In
