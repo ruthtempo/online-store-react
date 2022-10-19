@@ -8,7 +8,7 @@ export const ButtonQuantity = (p: {
     p.setUnits(p.units + 1);
   };
   const decreaseUnits = () => {
-    if (p.units > 0) {
+    if (p.units > 1) {
       p.setUnits(p.units - 1);
     }
   };
