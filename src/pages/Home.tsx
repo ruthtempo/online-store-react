@@ -12,7 +12,7 @@ import womenClothing from "../img/womenClothing.jpg";
 export const Home = (p: { categories: string[] }) => {
   return (
     <>
-      <Row className="mb-2">
+      <Row className="my-2">
         <Col>
           <Card>
             <Carousel>
@@ -64,7 +64,7 @@ export const Home = (p: { categories: string[] }) => {
           </Card>
         </Col>
       </Row>
-      <Row className="mb-3">
+      <Row>
         {p.categories.map((cat) => (
           <Col sm={6} lg={6} xxl={3} className="mb-2">
             <Nav.Link as={Link} to={`category/${encodeURIComponent(cat)}`}>

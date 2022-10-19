@@ -1,16 +1,11 @@
+import "animate.css";
 import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import {
-  BagCheck,
-  BagCheckFill,
-  BagHeart,
-  HeartFill,
-} from "react-bootstrap-icons";
+import { BagCheckFill, HeartFill } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
+import { isLoggedIn, useUser } from "../context/UserContext";
 import { Product } from "../pages/Category";
 import { ButtonQuantity } from "./ButtonQuantity";
-import "animate.css";
-import { isLoggedIn, useUser } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
 
 export const ProductCard = (p: { product: Product }) => {
   const { user, toggleFavorites, addToCart } = useUser();
