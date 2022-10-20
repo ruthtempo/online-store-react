@@ -88,17 +88,17 @@ export const Home = (p: { categories: string[] }) => {
       <Row md={3} className="mb-2">
         <Col lg={4} md={4}>
           <Card>
-            <img src={image1} alt="dresses" />
+            <img src={image1} alt="dresses" className="card-img" />
           </Card>
         </Col>
         <Col lg={4} md={4}>
           <Card>
-            <img src={image2} alt="jeans" />
+            <img src={image2} alt="jeans" className="card-img" />
           </Card>
         </Col>
         <Col lg={4} md={4}>
           <Card>
-            <img src={image3} alt="models" />
+            <img src={image3} alt="models" className="card-img" />
           </Card>
         </Col>
       </Row>
