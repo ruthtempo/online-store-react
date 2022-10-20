@@ -47,7 +47,7 @@ export const Navigation = (p: { categories: string[] }) => {
               <PopoverUser />
               <PopoverCart />
               <Nav.Link as={Link} href="#" to="favorites">
-                <HeartFill size={20} fill={"#4d88ff"} className="me-1" />
+                <HeartFill size={20} fill={"#4d88ff"} className="mx-1" />
                 {isLoggedIn(user) && user.favorites.length}
               </Nav.Link>
             </div>

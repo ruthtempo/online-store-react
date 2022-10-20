@@ -6,7 +6,7 @@ import { useUser } from "../context/UserContext";
 import buttons from "../img/smoke.jpg";
 
 export const Cart = () => {
-  const { removeFromCart, user } = useUser();
+  const { removeFromCart, user, setUser } = useUser();
   const navigate = useNavigate();
 
   const total = user?.cart.reduce(
@@ -103,10 +103,10 @@ export const Cart = () => {
                 onSubmit={handleSubmit}
               >
                 <FloatingLabel label="Full Name" className="mb-3">
-                  <Form.Control required />
+                  <Form.Control required value={user.name} />
                 </FloatingLabel>
                 <FloatingLabel label="Email" className="mb-3">
-                  <Form.Control required />
+                  <Form.Control required value={user.email} />
                 </FloatingLabel>
                 <FloatingLabel label="Address" className="mb-3">
                   <Form.Control required />
@@ -148,6 +148,7 @@ export const Cart = () => {
                   <Button
                     className={`mb-2 ${user.cart.length < 1 ? "disabled" : ""}`}
                     type="submit"
+                    onClick={() => setUser({ ...user, cart: [] })}
                   >
                     Confirm Purchase
                   </Button>
