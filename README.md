@@ -1,6 +1,6 @@
 Online Shop with full user-flow Simulation
 
-I used [Fakestore API](https://fakestoreapi.com/) to get the product database. Although there are not many products, it was enough to do the job and get an idea of the shop looks.
+I used [Fakestore API](https://fakestoreapi.com/) to get the product database. Although there are not many products, it was enough to do the job and give the shop some shape.
 
 **Functionalities:**
 
