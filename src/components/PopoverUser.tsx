@@ -1,13 +1,30 @@
 import { Button, OverlayTrigger, Popover } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { isLoggedIn, useUser } from "../context/UserContext";
+import { User, isLoggedIn, useUser } from "../context/UserContext";
+
 import { LoginForm } from "./LoginForm";
 
 export const PopoverUser = () => {
   const { user, setUser } = useUser();
 
+  const saveCurrentUserFavsInUsers = () => {
+    const parsedUsersArr: User[] = JSON.parse(
+      localStorage.getItem("users") ?? "[]"
+    );
+
+    const updatedUsersArr = parsedUsersArr.map((userObj) => {
+      if (userObj.id === user.id) {
+        return { ...userObj, favorites: user.favorites };
+      } else {
+        return userObj;
+      }
+    });
+    localStorage.setItem("users", JSON.stringify(updatedUsersArr));
+  };
+
   const logOut = () => {
+    saveCurrentUserFavsInUsers();
     localStorage.removeItem("currentUser");
     setUser({ cart: [] });
   };
