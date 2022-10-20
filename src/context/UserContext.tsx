@@ -14,7 +14,7 @@ export type User = Required<Anonymous>;
 
 export type Cart = {
   id: number;
-  price: string;
+  price: number;
   title: string;
   image: string;
   quantity: number;

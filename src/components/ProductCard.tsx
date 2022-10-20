@@ -5,6 +5,7 @@ import { BagCheckFill, HeartFill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import { isLoggedIn, useUser } from "../context/UserContext";
 import { Product } from "../pages/Category";
+import { formatCurrency } from "../utils/currency";
 import { ButtonQuantity } from "./ButtonQuantity";
 
 export const ProductCard = (p: { product: Product }) => {
@@ -63,7 +64,9 @@ export const ProductCard = (p: { product: Product }) => {
           }}
         ></div>
         <Card.Title className="flex-grow-1 mt-3">{p.product.title}</Card.Title>
-        <Card.Subtitle className="mt-2">{p.product.price} $</Card.Subtitle>
+        <Card.Subtitle className="mt-2">
+          {formatCurrency(p.product.price)}
+        </Card.Subtitle>
         <Card.Text className="d-flex flex-column align-items-center mt-3 flex-grow-0">
           <ButtonQuantity units={units} setUnits={setUnits} />
           <Button

@@ -10,7 +10,7 @@ export const Cart = () => {
   const navigate = useNavigate();
 
   const total = user?.cart.reduce(
-    (acc, product) => acc + parseFloat(product.price) * product.quantity,
+    (acc, product) => acc + product.price * product.quantity,
     0
   );
 
@@ -70,10 +70,7 @@ export const Cart = () => {
                       <p>Quantity:{cartProduct.quantity}</p>
                       <p>
                         Subtotal:
-                        <h4>
-                          {parseFloat(cartProduct.price) * cartProduct.quantity}
-                          $
-                        </h4>
+                        <h4>{cartProduct.price * cartProduct.quantity}$</h4>
                       </p>
                       <Button
                         className="mt-3 pb-2"
