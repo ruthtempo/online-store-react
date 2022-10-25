@@ -17,3 +17,4 @@ Note: When the user logs out, the favorites get save in the localStorage, so tha
 - Animate.css
 - [React Hook Form](https://react-hook-form.com/)
 
+Code Quality : [![CodeFactor](https://www.codefactor.io/repository/github/ruthtempo/online-store-react/badge)](https://www.codefactor.io/repository/github/ruthtempo/online-store-react)
