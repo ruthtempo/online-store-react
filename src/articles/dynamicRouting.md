@@ -1,12 +1,13 @@
 <h2>How to add dynamic routing to your react single page application</h2>
 
-This article aims to explain how to create routes dynamically as well as how to make dynamic api calls, depending on the selected route.
+This article aims to explain how to create routes dynamically and make dynamic Api calls, depending on the selected route.
 
-For this demonstration, we will use the example of an online-shop web prototype.
+For this demonstration, we will use the example of an online-shop web prototype. 
+
 
 First, create your react app and install [react-router-dom](https://reactrouter.com/en/v6.3.0/getting-started/installation)
 
-Next, in our `</App>` component (or wherever you decideto locate your routes ) you need to create our route path as a dynamic route. A dynamic route has this shape : `:routeName`.
+Next, in our `</App>` component (or wherever you decideto locate your routes ) create the route path as a dynamic route. A dynamic route has this shape : `:routeName`.
 
 
 ```js
@@ -22,10 +23,11 @@ function App() {
 }
 ```
 
-2. Next, in component `<Navigation/> `we can create our navigation links, each of them will have a unique path (different product categories)
-   This example API (fakestore.api) allows us to fetch by category. When the data is ready, we store the catogories in our state.
+2. Next, in component `<Navigation/> `create the navigation links, each of them will have a unique path (different product categories)
+  
+The API used for this demonstration is [fakestore.api](https://fakestoreapi.com/. FakeStore allows us to fetch by *category*. When the data is ready, we store the catogories in our state.
 
-```ts
+```js
 const [categories, setCategories] = useState<string[]>([]);
 
 useEffect(() => {
@@ -40,7 +42,7 @@ useEffect(() => {
 
 To display the categories in our JSX template we can either display them statically or map through our `categories` array. If so, for each category, we will add a link with our category name.
 
-```ts
+```js
 const Navigation = () => (
   <Nav>
     {categories.map((cat) => (
@@ -63,7 +65,7 @@ https://localhost:3000/category/men's%20clothing
 
 ```js
 export const Category = () => {
-  const { categoryName } = useParams(); // we receive the dynamic route name as a parameter
+  const { categoryName } = useParams(); // we receive the dynamic route value from routes
 
   useEffect(() => {
     const fetchproducts = () => {
@@ -85,8 +87,13 @@ export const Category = () => {
 
 We will use this parameter in the API call url to dinamically fetch our categories. If the `categoryName` exists, the products of that category will be rendered; else, nothing will be returned. 
 
-Through location a path is defined via navigation bar `.../categoriy/electronics` , then he router receives the element and creates a parameter that is used in the `<category/>` component to fetch the data.
+**In a nutshell:**
 
- Hopefully you can appreciate this better with the assistance ofthe diagram below:
+1. A location/route is defined `.../category/electronics` 
+2. Next, the router receives the element `/category/:categoryName` where `:categoryName` is "electronics"
+
+3. Through `useParams()` we can get a parameter with that reference and use it in our `<Category/>` component to fetch the specific products for that route.
+
+Hopefully you can appreciate this better with the assistance of the diagram below:
 
 ![diagram1](diagram1.png)
