@@ -85,7 +85,7 @@ export const Category = () => {
 
 We will use this parameter in the API call url to dinamically fetch our categories. If the `categoryName` exists, the products of that category will be rendered; else, nothing will be returned. 
 
-Through location a path is defined via navigation bar `/categories/electronics` , then he router receives the element and creates a parameter that is used in the `<category/>` component to fetch the data.
+Through location a path is defined via navigation bar `.../categoriy/electronics` , then he router receives the element and creates a parameter that is used in the `<category/>` component to fetch the data.
 
  Hopefully you can appreciate this better with the assistance ofthe diagram below:
 
