@@ -64,7 +64,7 @@ function App() {
 ```
 
 ```ts
-export const Categories = () => {
+export const Category = () => {
   const { categoryName } = useParams();
 
   const [categories, setCategories] = useState<string[]>([]);
